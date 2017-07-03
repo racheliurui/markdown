@@ -1,0 +1,36 @@
+RestAPI
+=================================================================
+elasticsearch management
+config   etc/elasticsearch/
+bin      usr/shared/elasticsearch
+log      var/log/elasticsearch
+service
+sudo -i service elasticsearch start
+========================Install===================================
+Windows
+1) Download ElasticSearch & Kibana
+2) Download x-Pack plugin zip and install (install offline)
+https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html
+Issues,
+https://github.com/elastic/kibana/issues/9046
+Possible way to resolve, upgrade nodejs (pending access)
+
+=============================================================================
+Linux (elasticsearch 5.1.1)
+Install ElasticSearch & Kibana & x-Pack
+https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html
+https://www.elastic.co/guide/en/kibana/current/deb.html
+
+Set up security,
+https://www.elastic.co/guide/en/x-pack/current/setting-up-authentication.html
+Kibana expose host ip, ES listen to localhost
+
+
+Install Logstash
+https://www.elastic.co/guide/en/logstash/current/installing-logstash.html
+
+
+**
+default location when installing using Apt
+/usr/share
+/etc
