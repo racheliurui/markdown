@@ -1,9 +1,18 @@
+title: Git cmmand cheet sheet
+date: 2016-05-05 20:10:33
+tags:
+- basic
+- git
+---
+
+
 S1, have existing repo and change to use git repo to track the change
 
 with remot repo
 $ mkdir /path/to/new_repo
 $ cd /path/to/new_repo
 $ git --bare init
+
 
 with existing repo
 $ cd /path/to/existing_repo

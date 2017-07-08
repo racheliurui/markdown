@@ -1,3 +1,11 @@
+title: Big Data And Hadoop
+date: 2017-06-01 20:10:33
+tags:
+- bigdata
+- hadoop
+- trending
+---
+
 <!-- TOC START min:1 max:3 link:true update:true -->
 - [Big data and hadoop for beginners](#big-data-and-hadoop-for-beginners)
 - [Big data Overview](#big-data-overview)

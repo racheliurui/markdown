@@ -1,3 +1,11 @@
+title: Intellij Settings
+date: 2017-05-05 20:10:33
+tags:
+- ide
+- intellj
+---
+
+
 <!-- TOC START min:1 max:3 link:true update:true -->
 - [Normal Setting after install](#normal-setting-after-install)
   - [Encoding](#encoding)

@@ -1,3 +1,10 @@
+title: common IOT scenario
+date: 2017-06-11 20:10:33
+tags:
+- iot
+- iot
+---
+
 # common IOT scenario
 device: sensor -->micro controller
 

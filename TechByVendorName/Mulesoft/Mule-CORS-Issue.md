@@ -1,3 +1,10 @@
+title: CORS issue with Mulesoft
+date: 2016-11-11 20:10:33
+tags:
+- mulesoft
+- cors
+---
+
 # CORS issue when using mule to serve micro services to frontend
 
 

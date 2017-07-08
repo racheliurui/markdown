@@ -1,3 +1,11 @@
+title: Atom Settings
+date: 2017-05-05 20:10:33
+tags:
+- ide
+- atom
+---
+
+
 # Atom behind firewall
 
 https://discuss.atom.io/t/is-there-any-proxy-settings/710/59

@@ -1,3 +1,12 @@
+title: Design Pattern - Factory
+date: 2016-01-05 20:10:33
+tags:
+- basic
+- designpattern
+- java
+---
+
+
 # Factory
 
 ```java

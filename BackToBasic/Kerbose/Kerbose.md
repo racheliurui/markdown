@@ -1,3 +1,11 @@
+title: What is Kerbose and how it is designed
+date: 2017-04-05 20:10:33
+tags:
+- basic
+- kerbose
+---
+
+
 <!-- TOC START min:1 max:3 link:true update:true -->
 - [What is Kerbose and how it is designed](#what-is-kerbose-and-how-it-is-designed)
   - [Designing an Authentication System: a Dialogue in Four Scenes](#designing-an-authentication-system-a-dialogue-in-four-scenes)

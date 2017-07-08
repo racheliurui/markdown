@@ -1,3 +1,10 @@
+title: Mule flow with groovy script
+date: 2013-11-11 20:10:33
+tags:
+- mulesoft
+- groovy
+---
+
 ```xml
 <flow name="get:/setVariable:api-config">
 	<set-variable variableName="username" value="" doc:name="username"/>

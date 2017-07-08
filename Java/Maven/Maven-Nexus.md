@@ -1,4 +1,10 @@
-
+title: Deploy rpm package to Nexus
+date: 2017-02-11 20:10:33
+tags:
+- java
+- maven
+- nexus
+---
 ## Deploy rpm package to Nexus
 ### Method 1
 ```shell

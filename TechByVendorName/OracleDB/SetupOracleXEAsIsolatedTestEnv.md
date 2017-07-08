@@ -1,3 +1,9 @@
+title: notes of setting up Oracle DB for test env
+date: 2017-02-11 20:10:33
+tags:
+- oracle
+- devops
+---
 
 # For existing DB, build isolated test from scratch
 

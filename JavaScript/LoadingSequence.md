@@ -1,3 +1,10 @@
+title: Javascript loading issue
+date: 2017-01-05 20:10:33
+tags:
+- javascript
+- troubleshooting
+---
+
 Basic
 http://javascript.info/tutorial/adding-script-html
 

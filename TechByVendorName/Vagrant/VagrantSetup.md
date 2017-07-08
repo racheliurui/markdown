@@ -1,3 +1,12 @@
+title: Vagrant Configuration
+date: 2017-03-11 20:10:33
+tags: vagrant ,vm
+tags:
+- vagrant
+- vm
+---
+
+
 install Vagrant
 install virtual box
 Config vagrant behind the proxy,

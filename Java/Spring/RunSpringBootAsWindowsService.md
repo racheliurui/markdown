@@ -1,3 +1,10 @@
+title: Setup a spring boot application to run on windows as a service
+date: 2016-12-11 20:10:33
+tags:
+- java
+- spring
+- springboot
+---
 
 # Setup a spring boot application to run on windows as a service
 

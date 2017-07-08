@@ -1,3 +1,11 @@
+title: Mule flow single threading
+date: 2015-11-11 20:10:33
+tags:
+- mulesoft
+- threading
+---
+
+
 # Sample flow implement single threading
 
 flow client raise a request and will get response instantly.
