@@ -20,7 +20,7 @@ From local machine, switch to the JDK folder and run jconsole
 <JDK_Home>/bin/jconsole
 ```
 
-With the UI, use kafkaBrokerName:6667 as the connection string to connect to Kafka.
+With the UI, use kafkaBrokerhostName:16667 as the connection string to connect to Kafka.
 ![jConsole_Kafka]
 
 
