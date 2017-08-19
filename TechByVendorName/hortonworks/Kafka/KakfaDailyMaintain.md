@@ -1,11 +1,44 @@
-title: Kafka Common configuration
-date: 2017-06-15 16:10:33
-tags:
-- hortonworks
-- kafka
----
+<!-- TOC START min:1 max:3 link:true update:true -->
+- [Kafka Common configuration](#kafka-common-configuration)
+  - [Auto start](#auto-start)
+  - [Change Kafka configuration](#change-kafka-configuration)
+    - [Configurations](#configurations)
+  - [Useful Commands](#useful-commands)
+- [Kafka Monitring Via Ambari](#kafka-monitring-via-ambari)
+
+<!-- TOC END -->
 
 # Kafka Common configuration
+
+## Auto start
+
+For Ambari managed Kafka, configure autostart from Console
+
+http://[ambari-host]:8080/#/main/admin/serviceAutoStart
+
+By default, the Kafka and zookeeper "autostart" function provided by Ambari is stopped. For any env other than __DEV__ this is be modified to enabled.
+
+## Change Kafka configuration
+
+To change kakfa configuration,
+* For Ambari managed Kafka Cluster,
+  * Modify from Ambari Console
+* For manually configured Kafka Cluster
+ * modify the kafka.properties file.
+
+### Configurations  
+
+* Allow Topic auto created
+
+ __auto.create.topics.enable__
+
+ Default is true. Should disable in __PROD__ environment
+
+* Allow Topic Deletion
+
+ __delete.topic.enable__
+
+ Default is false. Should disable in __DEV__ environment.
 
 ## Useful Commands
 
@@ -62,3 +95,12 @@ kafka-console-producer.sh \
  --entity-name my-new-topic \
  --add-config retention.ms=86400000
 ```
+
+# Kafka Monitring Via Ambari
+
+Definition of metrics
+
+https://docs.hortonworks.com/HDPDocuments/Ambari-2.4.1.0/bk_ambari-user-guide/content/grafana_kfka_hosts.html
+
+
+Bytes In
