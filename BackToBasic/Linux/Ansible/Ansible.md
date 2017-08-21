@@ -36,7 +36,7 @@ ssh-add /<path-to-key>/authorized_keys.myuserid
 
  ```shell
 
-ansible all -m ping -u liurx5 -i ./gip.DEV.hosts --sudo --ask-become-pass
+ansible all -m ping -u liurx5 -i ./DEV.hosts --sudo --ask-become-pass
 ansible all -a "/bin/echo hello" --sudo --ask-become-pass
 ```
 

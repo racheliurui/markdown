@@ -1,12 +1,11 @@
-<!-- TOC START min:1 max:3 link:true update:true -->
-- [Kafka Common configuration](#kafka-common-configuration)
-  - [Auto start](#auto-start)
-  - [Change Kafka configuration](#change-kafka-configuration)
-    - [Configurations](#configurations)
-  - [Useful Commands](#useful-commands)
-- [Kafka Monitring Via Ambari](#kafka-monitring-via-ambari)
+title: Kafka Env Debugging Tools
+date: 2017-07-10 14:06:33
+tags:
+- hortonworks
+- kafka
+- command cheetsheet
+---
 
-<!-- TOC END -->
 
 # Kafka Common configuration
 

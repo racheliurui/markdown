@@ -1,3 +1,10 @@
+title: Reset Ranger Password
+date: 2017-07-10 14:06:33
+tags:
+- hortonworks
+- ranger
+---
+
 
 # forgot the username and password
 
@@ -24,14 +31,3 @@ psql rangerdb -U rangerdba
 ```shell
 update x_portal_user set password = 'ceb4f32325eda6142bd65215f4c0f371' where login_id = 'admin';
 ```
-
-
-
-
-# password by environment
-
-## GIP
-
-
-import certificate
-java JCE unlimited
