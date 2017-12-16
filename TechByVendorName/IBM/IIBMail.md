@@ -53,8 +53,8 @@ mqsireportproperties TESTNODE_Rachel -e default -o ComIbmJVMManager -a
 
 # Configure the IIB Email Input node
 
-Email Server: pop3s://pop.gmail.com:995
-Security Identity: gmailtestaccount
+* Email Server: pop3s://pop.gmail.com:995
+* Security Identity: gmailtestaccount
 
 
 # Reference Links
