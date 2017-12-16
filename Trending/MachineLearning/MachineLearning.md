@@ -1,6 +1,7 @@
 title: Machine Learning
 date: 2017-09-24 17:50:23
 tags:
+mathjax: true
 - Machine Learning
 ---
 
