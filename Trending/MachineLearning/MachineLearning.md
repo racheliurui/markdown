@@ -4,11 +4,6 @@ tags:
 - Machine Learning
 ---
 
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
 https://www.coursera.org/learn/c/lecture/RKFpn/welcome
 
 
@@ -24,8 +19,6 @@ https://www.coursera.org/learn/c/lecture/RKFpn/welcome
 ## What is Machine Learning
 
 Two definitions of Machine Learning are offered.
-
-* Arthur Samuel described it as: "the field of study that gives computers the ability to learn without being explicitly programmed." This is an older, informal definition.
 
 * Tom Mitchell provides a more modern definition: "A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E."
 
@@ -74,35 +67,33 @@ __Liner Regression with one variable = Univariate Liner Regression__
 
 ## Cost Function
 
-cost function is to measure the accuracy of our hypothesis function.
+Cost function is to measure the accuracy of our hypothesis function.
 
 J(\theta_0, \theta_1) = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left ( \hat{y}_{i}- y_{i} \right)^2 = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left (h_\theta (x_{i}) - y_{i} \right)^2
 
+cost function
+=Squared error function
+=Mean squared error
 
-minimize{θ_0,θ_1}
+### Cost Function - Intuition I
 
-Square error cost functions.
-We can  This takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from x's and the actual output y's.
-
-J(θ0,θ1)=12m∑i=1m(y^i−yi)2=12m∑i=1m(hθ(xi)−yi)2
-To break it apart, it is 12 x¯ where x¯ is the mean of the squares of hθ(xi)−yi , or the difference between the predicted value and the actual value.
-
-This function is otherwise called the "Squared error function", or "Mean squared error". The mean is halved (12) as a convenience for the computation of the gradient descent, as the derivative term of the square function will cancel out the 12 term. The following image summarizes what the cost function does:
+假设我们的h模型是h(x)=θ_1x，
+假设模型看起来是对的，但是我们还不知道正确的θ值，那么尝试θ值的过程中，每次尝试我们都可以记录cost function 的值的变化，它是一个倒抛物线，体现了最低点就是我们要找的θ值。
 
 
-When the target variable that we’re trying to predict is continuous, such as in our housing example, we call the learning problem a regression problem. When y can take on only a small number of discrete values (such as if, given the living area, we wanted to predict if a dwelling is a house or an apartment, say), we call it a classification problem.
 
-## Cost Function - Intuition I
+### Cost Function - Intuition II
+假设我们的h模型是h(x)=θ_0+θ_1x
+假设模型看起来是对的，但是我们还不知道正确的θ值，那么尝试θ0和θ1值的过程中，每次尝试我们都可以记录cost function 的值的变化，它是一个3D的倒抛物线网，体现了最低点就是我们要找的θ0和θ1值。
 
-If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by hθ(x)) which passes through these scattered data points.
+从另一个角度看，如果横轴是θ0， 纵轴是θ1，然后用线表示θ0和θ1值组合导致一样结果的cost function J(θ)的话，这个图会很像星系旋转的图。而星系旋转图的中心点，就是我们追寻的正确的θ0和θ1值。因为在那里cost function的值最小。
 
-Our objective is to get the best possible line. The best possible line will be such so that the average squared vertical distances of the scattered points from the line will be the least. Ideally, the line should pass through all the points of our training data set. In such a case, the value of J(θ0,θ1) will be 0. The following example shows the ideal situation where we have a cost function of 0.
+## Gradient Descent
 
+Cost function是用来衡量我们的模型和参数的效果。Gradient Descent是一种__算法__帮我们找到最好的参数。
 
-When θ1=1, we get a slope of 1 which goes through every single data point in our model. Conversely, when θ1=0.5, we see the vertical distance from our fit to the data points increase.
+在这个课程中，
+:= assignment
+= truth assertion
 
-
-This increases our cost function to 0.58. Plotting several other points yields to the following graph:
-
-
-Thus as a goal, we should try to minimize the cost function. In this case, θ1=1 is our global minimum.
+\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)
