@@ -1,6 +1,5 @@
 title: notes of setting up mysql for test env
 date: 2017-02-11 20:10:33
-tags: mysql ,devops
 tags:
 - mysql
 - devops

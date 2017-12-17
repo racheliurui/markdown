@@ -1,8 +1,11 @@
 title: Machine Learning
+mathjax: true
 date: 2017-09-24 17:50:23
 tags:
 - Machine Learning
 ---
+
+
 
 https://www.coursera.org/learn/c/lecture/RKFpn/welcome
 
@@ -69,14 +72,6 @@ __Liner Regression with one variable = Univariate Liner Regression__
 
 Cost function is to measure the accuracy of our hypothesis function.
 
-$$
-\begin{eqnarray}
-\nabla\cdot\vec{E} &=& \frac{\rho}{\epsilon_0} \\
-\nabla\cdot\vec{B} &=& 0 \\
-\nabla\times\vec{E} &=& -\frac{\partial B}{\partial t} \\
-\nabla\times\vec{B} &=& \mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t} \right)
-\end{eqnarray}
-$$
 
 $$
 \displaystyle{J(\theta_0, \theta_1) = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left ( \hat{y}_{i}- y_{i} \right)^2 = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left (h_\theta (x_{i}) - y_{i} \right)^2}
