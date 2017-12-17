@@ -17,7 +17,9 @@ In a strict sense if your java application just executes Java byte code in the f
 
 Some application servers use the javac to compile jsp to class files and hence are dependent on having a system JDK installed, this can be contrasted with say tomcat, which bundles its own compiler for jsps, hence can run under the JRE.
 
-The java keystore is a feature of the Java SE, and both openJDK and Hotspot reference a file JAVA_HOME/lib/security/java.security to select their defaults.
+The java keystore is a feature of the Java SE, and both openJDK and Hotspot reference a file
+ JAVA_HOME/lib/security/java.security
+to select their defaults.
 
 Unless you have changed $JAVA_HOME/lib/security/java.security, the default keystore.type=jks file implementation looks for $HOME/.keystore hence its up to you to over ride the location, and both the 1.5 and 1.6 version of the sunJDK use that format and default location.
 

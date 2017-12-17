@@ -1,4 +1,5 @@
 title: Machine Learning
+mathjax: true
 date: 2017-09-24 17:50:23
 tags:
 - Machine Learning
@@ -107,4 +108,3 @@ $$
 
 $$
 \theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)
-$$
