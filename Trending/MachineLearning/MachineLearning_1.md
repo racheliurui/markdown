@@ -126,7 +126,7 @@ Gradient Descent For Linear Regression：
 
 {% math %}
 \frac{\partial}{\partial \theta_j}
-$$
+{% endmath  %}
 
 坡度越小，越接近local minimum（最佳点），Gradient Descent会自动降低step大小，因为上面公式算出来的值越小。另外，该值还体现了坡度的正负，以修正正确的移动方向。
 参见以下网址复习这种算法的原理：
