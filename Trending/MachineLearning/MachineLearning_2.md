@@ -76,15 +76,15 @@ Polynomial Regression
 
 * quadratic function
 
-$$
+{% math %}
 h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_1^2
-$$
+{% endmath %}
 
 * cubic function
 
-$$
+{% math %}
 h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_1^2 + \theta_3 x_1^3
-$$
+{% endmath %}
 
 * square root function
 

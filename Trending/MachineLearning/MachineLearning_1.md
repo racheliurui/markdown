@@ -154,6 +154,8 @@ https://www.coursera.org/learn/machine-learning/supplement/QKEdR/gradient-descen
 Vector是只有1列的matrix (a n×1 matrix)， 数学表达是R加上Row的右上标。
 
 Scalar： row和column都等于1
+{% math %}\mathbb{R}{% endmath  %} : refers to the set of scalar real numbers.
+{% math %}\mathbb{R^n} {% endmath  %}: refers to the set of n-dimensional vectors of real numbers.
 
 ### Matrix运算
 
