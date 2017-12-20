@@ -65,3 +65,35 @@ Debugging gradient descent： 跑若干遍，如果J(θ)反而变大，那么说
 Automatic convergence test：实际情况下，选定两次运行J(θ)比较结果，如果差距小于比如0.001，则说明是在收敛.但是具体情况具体分析。
 
  α is sufficiently small, then J(θ) will decrease on every iteration.
+
+## Features and Polynomial Regression
+
+Feature在ML里面指的是我们拿到的数据参数。比如房子的宽度算是一个feature。
+有时候，为了fitin 模型，我们可以把参数二合一，比如不用长宽，而是用相乘得到的面积作为一个模型的feature。
+
+Polynomial Regression
+这是非liner regression。例如：
+
+* quadratic function
+
+$$
+h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_1^2
+$$
+
+* cubic function
+
+$$
+h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_1^2 + \theta_3 x_1^3
+$$
+
+* square root function
+
+$$
+h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 \sqrt{x_1}
+$$
+
+需要建立的概念是以上每种模型的大致图形应当符合我们收集的数据。有算法帮助我们选择模型。
+
+使用这些模型的时候feature scaling非常重要，因为平方或者多次方运算后的结果会很大或者很小。
+
+# Normal Equation
