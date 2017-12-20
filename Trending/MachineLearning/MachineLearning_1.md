@@ -77,9 +77,9 @@ cost function for liner regression model
 =Mean squared error
 
 
-$$
+{% math %}
 J(\theta_0, \theta_1) = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left ( \hat{y}_{i}- y_{i} \right)^2 = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left (h_\theta (x_{i}) - y_{i} \right)^2
-$$
+{% endmath  %}
 
 对于Liner Regression来说（h(x)=θ_0+θ_1x），它的模型图形总是一个bowl shaped，又叫convex function.
 
@@ -109,22 +109,22 @@ Cost function是用来衡量我们的模型和参数的效果。Gradient Descent
 gradient descent算法的表达：
 
 repeat until convergence:
-$$
+{% math %}
 \theta_1:=\theta_1-\alpha \frac{d}{d\theta_1} J(\theta_1)
-$$
+{% endmath %}
 
 
 Gradient Descent For Linear Regression：
 
-$$
+{% math %}
 \begin{align*} \text{repeat until convergence: } \lbrace & \newline \theta_0 := & \theta_0 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}(h_\theta(x_{i}) - y_{i}) \newline \theta_1 := & \theta_1 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}\left((h_\theta(x_{i}) - y_{i}) x_{i}\right) \newline \rbrace& \end{align*}
-$$
+{% endmath  %}
 
 上面的公式中，\alpha 表示的是learning rate ， 太大的话，可能永远找到最佳点，如果太小，可能花很长时间。
 
 以下部分表示的是曲线的坡度（slope）。
 
-$$
+{% math %}
 \frac{\partial}{\partial \theta_j}
 $$
 
@@ -155,6 +155,7 @@ Vector是只有1列的matrix (a n×1 matrix)， 数学表达是R加上Row的右�
 
 Scalar： row和column都等于1
 {% math %}\mathbb{R}{% endmath  %} : refers to the set of scalar real numbers.
+
 {% math %}\mathbb{R^n} {% endmath  %}: refers to the set of n-dimensional vectors of real numbers.
 
 ### Matrix运算

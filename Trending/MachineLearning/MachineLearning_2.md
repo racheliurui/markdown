@@ -1,4 +1,4 @@
-title: Machine Learning - Week 1
+title: Machine Learning - Week 2
 mathjax: true
 date: 2017-12-20 06:31:00
 tags:
@@ -11,35 +11,35 @@ https://www.coursera.org/learn/machine-learning/home/week/2
 
 上周学的是单个参数的Linear Regression， 模型中只有一个变量x。Multivariate Linear Regression是，
 
-$$
+{% math %}
 h_\theta (x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \cdots + \theta_n x_n
-$$
+{% endmath %}
 
 具体描述：
 
-$$
+{% math %}
 \begin{align*}x_j^{(i)} &= \text{value of feature } j \text{ in the }i^{th}\text{ training example} \newline x^{(i)}& = \text{the input (features) of the }i^{th}\text{ training example} \newline m &= \text{the number of training examples} \newline n &= \text{the number of features} \end{align*}
-$$
+{% endmath %}
 
 适用Matrix表示就变成，
 
-$$
+{% math %}
 \begin{align*}h_\theta(x) =\begin{bmatrix}\theta_0 \hspace{2em} \theta_1 \hspace{2em} ... \hspace{2em} \theta_n\end{bmatrix}\begin{bmatrix}x_0 \newline x_1 \newline \vdots \newline x_n\end{bmatrix}= \theta^T x\end{align*}
-$$
+{% endmath %}
 
 其中，
 
-$$
+{% math %}
 x_{0}^{(i)} =1 \text{ for } (i\in { 1,\dots, m } )
-$$
+{% endmath %}
 
 ## Gradient Descent for Multiple Variables
 
 对于多参数的Linear Regression模型，求最优参数的算法相应就叫做，Gradient Descent for Multiple Variables。 运用前面的知识，其表示就写为：
 
-$$
+{% math %}
 \begin{align*}& \text{repeat until convergence:} \; \lbrace \newline \; & \theta_j := \theta_j - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_j^{(i)} \; & \text{for j := 0...n}\newline \rbrace\end{align*}
-$$
+{% endmath %}
 
 ### Gradient Descent in Practice I - Feature Scaling
 
@@ -50,11 +50,11 @@ or
 
 方法叫做feature scaling 或者 mean normalization：
 
-$$
+{% math %}
 x_i := \dfrac{x_i - \mu_i}{s_i}
-$$
+{% endmath %}
 
-\μ_i is the average of all the values for feature (i) and \s_i is the range of values (max - min), or s_i is the standard deviation.
+{% math %}\μ_i{% endmath %} is the average of all the values for feature (i) and \s_i is the range of values (max - min), or s_i is the standard deviation.
 
 ### Gradient Descent in Practice II - Learning Rate
 
@@ -88,9 +88,9 @@ h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_1^2 + \theta_3 x_1^3
 
 * square root function
 
-$$
+{% math %}
 h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 \sqrt{x_1}
-$$
+{% endmath %}
 
 需要建立的概念是以上每种模型的大致图形应当符合我们收集的数据。有算法帮助我们选择模型。
 
