@@ -136,6 +136,8 @@ https://www.coursera.org/learn/machine-learning/supplement/QKEdR/gradient-descen
 
 当前介绍的gradient descent算法属于Batch gradient descent。它是gradient descent的细分算法，它算得时候采用完整已知数据集来计算。有些其它gradient descent算的时候是采用部分数据集的。
 
+Normalised feature
+f_norm = (f - f_mean) / (f_max - f_min)
 
 
 ## 概念小结

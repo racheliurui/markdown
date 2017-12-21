@@ -97,3 +97,15 @@ h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 \sqrt{x_1}
 使用这些模型的时候feature scaling非常重要，因为平方或者多次方运算后的结果会很大或者很小。
 
 # Normal Equation
+
+非常重要的一种直接公式求{% math %}\theta{% endmath %}的算法。适用于多参数的liner regression模型。
+
+跟Gradient Descent相比各有利弊。
+优点： 不用选择learning rate（靠经验和debug），不用多次interate求最优，直接算出来。
+缺点： 计算复杂度随feature n的值飙升，{% math %}n^3{% endmath %} 而Gradient Descent的计算复杂度是 {% math %}kn^2 {% endmath %}。
+一般来说feature个数大于10，000时候需要考虑用Gradient Descent算法求{% math %}\theta{% endmath %}。
+
+## Normal Equation的隐藏bug
+有时候有些数据用这个inv算inverse的时候算法会报错，避免这个问题，在octave中使用 'pinv' 而不是'inv.'
+1） 如果feature有重复（比如一个feature的平方尺一个feature是平方米）。
+2） 如果m ≤ n，也就是说模型尺寸大于训练数据集。
