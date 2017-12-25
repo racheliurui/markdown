@@ -117,3 +117,17 @@ options = optimset('GradObj', 'on', 'MaxIter', 100);
 initialTheta = zeros(2,1);
    [optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
 ```
+
+## MultiClass classification
+
+one-vs-rest
+用同样的算法，每次求参数的时候，把当前class的剩余类别看成一个虚拟同类。然后求出当前class的参数。
+
+数学表示：
+
+{% math %}
+\begin{align*}& y \in \lbrace0, 1 ... n\rbrace \newline& h_\theta^{(0)}(x) = P(y = 0 | x ; \theta) \newline& h_\theta^{(1)}(x) = P(y = 1 | x ; \theta) \newline& \cdots \newline& h_\theta^{(n)}(x) = P(y = n | x ; \theta) \newline& \mathrm{prediction} = \max_i( h_\theta ^{(i)}(x) )\newline\end{align*}
+{% endmath %}
+
+
+# Solving "Over fitting" problem
