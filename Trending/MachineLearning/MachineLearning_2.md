@@ -109,3 +109,11 @@ h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 \sqrt{x_1}
 有时候有些数据用这个inv算inverse的时候算法会报错，避免这个问题，在octave中使用 'pinv' 而不是'inv.'
 1） 如果feature有重复（比如一个feature的平方尺一个feature是平方米）。
 2） 如果m ≤ n，也就是说模型尺寸大于训练数据集。
+
+
+# Octave Tutorial
+
+* Octave定义一个function可以返回多个值 （定义返回值是matrix）
+* Octave可以实现通用的function，比如在视频中的例子是简单实现了liner regression的cost function。 这样我们给x和y的maxtrix就可以得到cost function的值。
+
+** Matrix运算符里面.* 代表对于每一行跟后面的乘

@@ -168,6 +168,15 @@ Matrix-Vector乘法：An m x n matrix multiplied by an n x 1 vector results in a
 Matrix-Matrix乘法：An m x n matrix multiplied by an n x o matrix results in an m x o matrix.
 第一个matix的行乘以第二个matrix的列
 
+Matrix相乘的概念非常重要：
+
+{% math %}
+
+\begin{bmatrix} a & b \newline c & d \newline e & f \end{bmatrix} *\begin{bmatrix} w & x \newline y & z \newline \end{bmatrix} =\begin{bmatrix} a*w + b*y & a*x + b*z \newline c*w + d*y & c*x + d*z \newline e*w + f*y & e*x + f*z\end{bmatrix}
+
+{% endmath  %}
+
+
 ### Matrix运算的特点
 A×B 不等于B×A
 A×B×C 等于A×(B×C)
