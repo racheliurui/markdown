@@ -15,18 +15,22 @@ tags:
 
 引入概念g(z)：
 Sigmoid function = logistic function
-这个方程的图形决定了其区间在0和1之间。
+这个方程的图形决定了其区间在0和1之间
+
+**注意这里的theta和x都是单个的vector（建模使用）。当转换为多维时，每组x是一行数据，而不再是一列数据，所以其运算表达方式不一样。**
 
 {% math %}
 \begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}
 {% endmath %}
 
+其中g(z)就是著名的sigmoid function
 
 模型引申的公理：
 
 {% math %}
 \begin{align*}& h_\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \newline& P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1\end{align*}
 {% endmath %}
+
 
 ## Decision Boundary
 
@@ -77,6 +81,9 @@ J(\theta) = - \frac{1}{m} \displaystyle \sum_{i=1}^m [y^{(i)}\log (h_\theta (x^{
 
 用Matrix方式表示：
 
+**注意这里的h等同于多维情况下的模型。（已手工演算）**
+
+
 {% math %}
 \begin{align*} & h = g(X\theta)\newline & J(\theta) = \frac{1}{m} \cdot \left(-y^{T}\log(h)-(1-y)^{T}\log(1-h)\right) \end{align*}
 {% endmath %}
@@ -109,6 +116,12 @@ function [jVal, gradient] = costFunction(theta)
   gradient = [...code to compute derivative of J(theta)...];
 end
 ```
+
+其中gradient对应的是以下部分的值（https://en.wikipedia.org/wiki/Partial_derivative）
+{% math %}
+\frac{1}{m} X^{T} (g(X \theta ) - \vec{y})
+{% endmath %}
+
 
 作为参数告诉高级算法。
 
