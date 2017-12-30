@@ -66,10 +66,12 @@ At a very simple level, neurons are basically computational units that take __in
 ### Neron network的简化表达
 
 算法：
+假定：
 {% math %}
 z^{(j)} = \Theta^{(j-1)}a^{(j-1)}
 {% endmath %}
 
+那么：
 
 {% math %}
 a^{(j)} = g(z^{(j)})
