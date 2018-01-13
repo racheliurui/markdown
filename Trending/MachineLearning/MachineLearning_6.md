@@ -3,7 +3,7 @@ mathjax: true
 date: 2018-01-09 21:43:11
 tags:
 - Machine Learning
-- Neron Network
+- Machine Learning Methodology
 ---
 
 # What do to next
@@ -98,3 +98,60 @@ Model Complexity Effects:
 * Higher-order polynomials (high model complexity) fit the training data extremely well and the test data extremely poorly. These have low bias on the training data, but very high variance.
 
 In reality, we would want to choose a model somewhere in between, that can generalize well but also fits the data reasonably well.
+
+
+# 下一步的工作
+
+
+举个邮件spam的例子：
+
+* Honeypot project --》 负面的例子。 为了解决邮件spam的问题，突发奇想注册专门的邮箱收集大量spam邮件来进行数据分析。虽然spam问题确实需要大量数据，但是这样做并不能保证成功。
+* 通常spam分析会有1w到5w的word作为feature，可能会通过邮件分析top常用词的方式。
+* 很复杂的情况会出现：区分大小写吗？区分单复数吗？错误的拼写如何应对？（w4tch，代表watch，但是正常不会被算作过滤词，因为拼写错误）
+* 加入复杂的feature，对于邮件的header区域的信息进行分析。
+
+
+
+## Error Analysis
+
+
+* 算法从简单的开始，迅速实现，使用cv数据测试，验证
+* 观察learning curve决定是否需要更多数据？ 更多feature？
+* Error Analysis --- 以spam为例，把算法归类错的训练数据拿出来进行分析。
+  * 对错误进行分类，比如，如果fishing email这块做得最差，那么改进算法应该focus在这一块
+  * 进行numerical evaluation。加入steming和不用stemming；区分大小写和不区分大小写； 哪种方式效果好？
+
+## 处理skewed data
+
+什么是skewed data？
+典型场景： 癌症分类算法，实际数据0.5%的总人数是positive，算法error比例是1%。这种情况下，hardcode result=0的error比例将为是0.5%，这个结果看起来都会比算法的error比例1%小。那么怎么正确衡量算法的准确度呢？
+
+这里引入两个概念：Pricision和recall
+在算法中，rare case的情况我们标示为1.
+Pricision：在所有算法预测结果为1的训练数据中，有多少是实际是1？
+Recall： 在所有实际是1的训练数据中，有多少被算法预测为1？
+
+上面这两个比例越高说明算法准确度越高。Cheating的算法是无法通过Pricision和Recall的衡量测试的。
+例如，上面的cheating算法，recall为0.
+
+### trading off precision和recall
+
+实际算法比较中，如果我们调整threshold（阀值），我们可以看到precision和recall之间的关系。
+比如，比例》0.9才算positive，那么precision会很高，但是recall就会变低。反之亦然。
+
+这样的情况，如果有多个算法，recall高的precision低，我们如何比较算法的准确率呢？
+首先，（recall+precision）/2 的值用来比较是绝对不行的，参见上面hardcode result=0的算法，那个算法使用平均值衡量的话，会可能脱颖而出。
+
+需要一种算法能够综合考虑precision和recall的表现，这种情况有多种公式可以处理，本课程引入F1的算法。
+F1 = 2* P*R（P+R）
+
+基本上就是P和R表现的平均好的才会脱颖而出。
+
+## 使用大量数据
+
+前面讲过，算法不对，数据多也是白搭。
+但是对于一些算法，比如AI词汇填空，实际证明了，数据越多，算法越精准。那么怎么衡量数据多好不好呢？
+
+提问： 如果你有这些数据，对于human expert来说，他能不能精准的给出正确答案？if yes， go ahead， 收集越多数据，模型会越精准。if no，说明再多数据也没用。
+
+极端例子：比如只收集的房子的面积数据，如果问地产中介，他也给不出估价。这种情况就说明，数据多了也没用。
