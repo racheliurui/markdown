@@ -66,11 +66,72 @@ PCA不是Linner Regression
 
 ### PCA的算法
 
-先处理数据： feature normalization 和 mean normalization
-算法：
+* 先处理数据： feature normalization 和 mean normalization
+* 应用PCA算法将数据从n维降低到k维：
 
+先算sigma值，以下是如果x是一个vector，从1到n loop所有的vector的情况。
 {% math %}
-\sum=\frac{1}{m\displaystyle\sum\limits_{i=0}^n (x^i)(x^i)^T}
+\begin{align*}
+Sigma=\frac{1}{m}\displaystyle\sum\limits_{i=1}^n (x ^\left(i\right))(x ^\left(i\right))^T
+\end{align*}
 {% endmath %}
 
-SVD (singlar value decomposition)
+当X来代表所有数据的时候，
+{% math %}
+\begin{align*}
+Sigma=\frac{1}{m}X^TX
+\end{align*}
+{% endmath %}
+
+使用SVD (singlar value decomposition)算法，带入sigma。
+
+{% math %}
+\begin{align*}
+[u,s,v] = SVD (Sigma)
+\end{align*}
+{% endmath %}
+
+返回的U是一个n*n的matrix。取前面k列，即得到n*k的matrix，这个matrix叫{% math %}u_{reduce}{% endmath %}.
+
+
+{% math %}u_{reduce})^TX{% endmath %}即可得到reduce的z。
+
+### 从压缩的数据反向得到原始数据
+n*k的{% math %}u_{reduce}{% endmath %} 乘以 k*1 的z可以得到大致的最初n*1的x vector
+
+{% math %}
+\begin{align*}
+x_{approx}=u_{reduce}*z
+\end{align*}
+{% endmath %}
+
+### 如何选择压缩维度k
+
+“99% of variance is retained”
+
+这句话的意思是，经过压缩后，
+
+{% math %}
+\begin{align*}
+\frac{  \frac{1}{m}\displaystyle\sum\limits_{i=1}^m \lVert x ^\left(i\right)-x_{approx} ^\left(i\right)\rVert ^2} {\frac{1}{m}\displaystyle\sum\limits_{i=1}^m \lVert x ^\left(i\right)\rVert ^2} \leqslant 0.01
+\end{align*}
+{% endmath %}
+
+根据这个参数指导寻找最优的k值
+
+* Option1， k=1开始，逐渐放大k，直到上述的公式成立
+* Option2， 使用SVD (singlar value decomposition)算法，返回值的s是一个n*n的diagonal matrix （除了左上到右下的对角线，其它部分为0）。
+
+{% math %}
+\begin{align*}
+[u,s,v] = SVD (Sigma)
+\end{align*}
+{% endmath %}
+
+
+根据SVD的结果判断以下是否成立，如果不成立，则k不满足要求。
+{% math %}
+\begin{align*}
+\frac{\sum\limits_{i=1}^k s_{ii}}{ \sum\limits_{i=1}^n s_{ii} }\geq0.99
+\end{align*}
+{% endmath %}
