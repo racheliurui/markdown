@@ -60,7 +60,7 @@ idea： run k-means 很多次，每次都random initialize centoid，得到clust
 
 * Linner Regression和PCA的区别
 
-Linner Regression是找每个点到目标直线的沿着坐标轴的距离。PCA则是找每个点project到坐标轴的距离。
+Linner Regression是找每个点到目标直线的沿着坐标轴的距离。PCA则是找每个点project到目标直线的距离。
 
 PCA不是Linner Regression
 
@@ -94,7 +94,13 @@ Sigma=\frac{1}{m}X^TX
 返回的U是一个n*n的matrix。取前面k列，即得到n*k的matrix，这个matrix叫{% math %}u_{reduce}{% endmath %}.
 
 
-{% math %}u_{reduce})^TX{% endmath %}即可得到reduce的z。
+对于单个x， {% math %}u_{reduce})^Tx{% endmath %}即可得到reduce的z。
+对于一组X数据， 则直接进行矩阵求值：
+
+```octave
+U_reduce = U(:,1:K);
+Z = X * U_reduce;
+```
 
 ### 从压缩的数据反向得到原始数据
 n*k的{% math %}u_{reduce}{% endmath %} 乘以 k*1 的z可以得到大致的最初n*1的x vector
@@ -135,3 +141,15 @@ x_{approx}=u_{reduce}*z
 \frac{\sum\limits_{i=1}^k s_{ii}}{ \sum\limits_{i=1}^n s_{ii} }\geq0.99
 \end{align*}
 {% endmath %}
+
+* PCA 算法使用时应该只用于training data set，而不是cv或者test data set。
+
+#### PCA的意义
+
+* 压缩数据，减少存储，加速算法
+* 压缩数据，方便visualization展示数据（人类肉眼智能观察最多3D的数据）
+
+错误的使用场景：
+
+* 错误1: 使用PCA用来做防止overfitting，但是很容易丢失数据中的有用信息； instead还是使用regularization才是正确的做法。
+* 错误2: PCA作为默认步骤处理数据。只有正常的分析不work时候，才考虑使用PCA进行数据压缩。

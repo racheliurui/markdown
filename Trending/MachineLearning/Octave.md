@@ -15,3 +15,12 @@ Add path
 ```cmd
 addpath('D:\workspaces\bitbucket\machinelearninghomework\machine-learning-ex2\ex2')
 ```
+
+
+```octave
+if (rem (x, 2) == 0)
+  printf ("x is even\n");
+else
+  printf ("x is odd\n");
+endif
+```
