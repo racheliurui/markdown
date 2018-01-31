@@ -45,6 +45,21 @@ idea： run k-means 很多次，每次都random initialize centoid，得到clust
 * Elbow Method：根据分组的不同，cost function随着cluster的数字变化（luckily会）呈现elbow的曲线（大多情况下没有这种图像）
 * 根据需要来决定分组数目。 比如，T恤尺码分组（SML or xs SML xl）
 
+### 使用k-means进行图像压缩的原理
+
+假设：原图是256色（每个pixel使用三组数据表示红黄蓝的梯度颜色，每组数据是8位二进制（0-256））。
+目标：选择16色来代表原图（每个pixel使用三组数据，每组数据是4位二进制（0-16））。
+
+使用k-means： 将原图的每个pixel看作一组数据，使用k means尝试将其分组到16色的分组中。 这里分组的目标确定了。
+原先的每个pixel是256*3个feature, 新的目标映射每个pixel是16*3个feature。所以我们要尝试将数据分组为256/16=16组。
+
+随机选择16个颜色（16*3）
+计算每个pixel到这些颜色的距离，找出centroids，然后重新找k
+直到k不再变化。
+然后将原先像素点属于的k算出来取代原先的pixel
+
+---》pixel个数不变，颜色维度变小。原图像（256*3*pixel数目），新的图像（16*3*pixel数目），压缩了16倍。
+
 
 # Motivation
 
