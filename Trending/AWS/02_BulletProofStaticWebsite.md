@@ -1,4 +1,4 @@
-title: AWS - Overview
+title: AWS - Handson Static Website
 date: 2018-02-05 09:13:23
 tags:
 - AWS
