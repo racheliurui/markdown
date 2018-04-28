@@ -13,7 +13,7 @@ tags:
 * Alarms
   * integrated with SNS
   * Alarm Threshhold combined with Evaluation Period will decide wether to trigger an alarm
-  * state: OK;ALARM;INSUFFICIENT_DATA
+  * state: __OK;ALARM;INSUFFICIENT_DATA__
 * Cloudwatch logs
   * Log source: EC2, CloudTrail, or other resources
   * log streams/groups/filters/Retentions

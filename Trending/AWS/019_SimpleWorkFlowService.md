@@ -7,11 +7,13 @@ tags:
 
 # 059.mp4 060.mp4 - SWF overview
 
+SWF: __Simple WorkFlow Service__
+
 * long running process
 * interact with aws, user, on-promise infrastructure
 * WorkFlow Engine
 * Workflow and sub WorkFlow
-* Domain : one or multiple workflows
+* SWF Domain : one or multiple workflows
 * Actor:
    * Starter
    * Decider

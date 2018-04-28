@@ -8,6 +8,8 @@ tags:
 
 # IAM Overview
 
+IAM: __Identity and Access Management__
+
 ## 010.mp4 overview
 
 
@@ -56,7 +58,7 @@ Role的定义包含：
    * RoleName: unique name within the current aws account
    * RoleARN: unique within whole AWS
        * arn:aws:iam::<uniqueaccountid>:role/<RoleName>
-   * Trusted Entities: the service which
+   * Trusted Entities: the service which ???
 
 
 ### Identity Federation
@@ -80,6 +82,18 @@ Role的定义包含：
     Role can represent services under current account, to create a role mean give certain service under current account to access to other resources. (create a role represent certain type of resource, then apply policy to the role to giva access to resource, last???--which missed in the video, I guess should be assign role to instance of certain service. then that service will have access to resource which being defined via policy)
     Role can delecate the access to resource to allow access between different aws account
 * download credentials report
+
+## Identity-based policy
+
+* Identity-based policy ： 可以attach到user，group，role上的policy
+  * Managed policy：定义好以后可以复用的policy
+    * aws managed
+    * customer managed
+  * in-line policy: hard code在user，group或者role的定义里的，不能重用的policy
+
+aws managed policy
+https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html
+
 
 # 013.mp4 Trusted Advisor Service
 
