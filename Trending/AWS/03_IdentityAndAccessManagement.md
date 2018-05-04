@@ -43,6 +43,10 @@ credential的类型：
    * SSH key
    * Server Certificates
 
+用户re-name，
+* console是不支持的，但是可以用CLI；powershell或者API
+
+
 ### Group
 
    * 不能nest group
@@ -141,3 +145,9 @@ can setup to send notification regularly to corresponding emails.
 * one account can have only 1 alias
 * Users need their own access keys(not password !!!) to make programmatic calls to AWS using the AWS Command Line Interface (AWS CLI), the AWS SDKs, or direct HTTP calls using the APIs for individual services.
 * Policy sample definition (009.html)
+
+
+## others
+
+Sign in page url:
+https://My_AWS_Account_ID.signin.aws.amazon.com/console/

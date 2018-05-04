@@ -21,6 +21,7 @@ S3 is a webstore , not a file system !!
 # 025.mp4 - hands on demo on S3 Config
 
 * enable , disable versioning at bucket level
+* before enable version , object has default version id of __null__
 * delete & revert deletion of object
 * list versions for an object, apply a selected version
 * add life cycle rule to selected bucket: which scope in the selected bucket will be moved to what storage after defined days and be deleted from S3 after another defined days.
@@ -69,6 +70,7 @@ https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html#how-do-i-enable-cors
 
 How to share object with others via pre-signed URL
 https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html
+* use (your credential + expiretime) to create the url
 
 
 About multi part uploading
@@ -87,7 +89,9 @@ https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notificat
 
 Best practise to max the S3 performance (Key naming)
 https://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.html
-
+* S3的object的path类似于key，为了能够均匀分布使得存取性能优越可以：
+1） 加hash在key前面
+2） reverse key string
 
 Difference between ElasticCache and Cloudfront --- which is the destination to cache S3 objects?
 ElastiCache uses redis and memcached to improve the performance of web applications by allowing you to retrieve information from fast, managed, in-memory data stores, instead of relying entirely on slower disk-based databases.
@@ -98,5 +102,5 @@ https://acloud.guru/forums/aws-certified-solutions-architect-associate/discussio
 
 
 S3 detect data corruption
-Checksum and CRCs
+Content-MD5 Checksum and CRCs to detect data corruption
 https://aws.amazon.com/s3/faqs/#

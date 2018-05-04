@@ -7,26 +7,17 @@ tags:
 
 # Terminology
 
-* 16 Regions
+* 16 Regions : 不同的Region价格不同，部署的服务不同
+* 42 Availability Zone : ,zone之间的故障是完全隔离的
+* 50 Edge Locations: 缓存；加速
 
-不同的Region价格不同，部署的服务不同
-
-* 42 Availability Zone
-
-zone之间的故障是完全隔离的
-
-* 50 Edge Locations
-
-缓存；加速
-
-IAAS
-PAAS
-SAAS
-FAAS (serverless service)
 
 # Services
 
+FAAS (function as a service; serverless service)
 问题：那些服务是serverless的，哪些不是？ 给定一个场景，需要哪些服务的组合？
+https://aws.amazon.com/serverless/
+serveless的服务包括： lambda, dynamodb, api gateway , S3, AWS Step Functions,SNS,SQS Kinesis, Athena, tools and services (city9)
 
 ## Compute services
 
@@ -68,7 +59,6 @@ Cloud Front: Caching (Edge)
 Route53: Domain Name Services
 Direct connect: connect private datacenter --> AWS
 ELB (also compute):
-
 Best Practise: deploy one VPC into muti hi-Availability zones.
 
 ## management tools
@@ -88,7 +78,6 @@ Best Practise: deploy one VPC into muti hi-Availability zones.
 
 
 Process decoupling example,
-
 请求放sqs，连cloudwatch，请求spike的时候，cloudwatch的alarm触发生成更多EC2实例（autoscaling），cloudwatch连SES通知用户。反之scale down。
 
 ## Security & Identitiy & Compliance

@@ -58,3 +58,7 @@ https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.Prov
 
 Table name rule
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.NamingRules
+
+
+Best Practise of design table primary key (partition key and sort key)
+https://aws.amazon.com/blogs/database/choosing-the-right-dynamodb-partition-key/
