@@ -39,9 +39,11 @@ tags:
 
 ## Caching Strategies
 
-* Lazy Loading
-* Write Through
-* Adding TTL (memcache support seconds , Redis support both seconds or milliseconds)
+* 采用哪种策略取决于需求；策略各有优缺点；策略可以混合使用；实现策略取决于代码
+ * Lazy Loading
+ * Write Through
+ * Adding TTL (memcache support seconds , Redis support both seconds or milliseconds)
+
 
 Elastic Cache vs Cloud Front
 Elastic Cache --- Designed to cache in memory , caching query (dynamic cache)
@@ -51,8 +53,5 @@ CloudFront --- designed at Edge location , SDN
 A __Node__ is the smallest building block of an ElastiCache deployment.
 https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/WhatIs.html
 
-Redis append-only files (AOF) ??? and Redis Multi-AZ with Auto Failover ???
-Support EC2 instance type???
-
-How to scale out Redis cluster (???)
-https://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/scaling-redis-cluster-mode-enabled.html
+Redis append-only files (AOF) ： Redis一种持久化的方式
+Redis Multi-AZ with Auto Failover

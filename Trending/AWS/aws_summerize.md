@@ -7,11 +7,14 @@ tags:
 # Service Saling Summary
 
 
-|   Service Name | Sacling capability | Comments |
+|   Service Name | Sacling/Failover capability | Comments |
 |-----|-----|----|
-| AutoSacling| AZ --Yes ; Region -- No| horizental scaling EC2 in same autoscaling group|
-
-
+| AutoScaling| AZ --Yes ; Region -- No| horizental scaling EC2 in same autoscaling group|
+| Elastic Cache| Multi AZ failover; | |
+| Route53 | Global Service ||
+| CloudFront| Global Service ||
+| VPC | Span Multi AZ; Region -- No ||
+| RDB | Muti AZ; Multi Region (read replica) ||
 # Calcuation
 
-EBS --> GP2 typed SSD  --> flexible IOPS 
+EBS --> GP2 typed SSD  --> flexible IOPS

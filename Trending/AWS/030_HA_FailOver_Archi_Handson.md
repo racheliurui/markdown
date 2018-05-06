@@ -1,9 +1,8 @@
 title: AWS - High Available and Fault Tolerant Architecture
 date: 2018-04-19 15:07:00
 tags:
-- AWS
-- HA
-- Faut Torlerant
+- AWS Architecture
+- Faut Torlerant Architecture
 ---
 
 # 085.mp4 --- HA and Fault Torerant Architecture hands on overview
@@ -13,7 +12,7 @@ tags:
 ### Advanced VPC Architecture
 
 * The Advanced VPC Architecture can use CloudFormer to duplicate into different regions
-  * __Route53__ (Global) handle cross Region requests to IGW sitting in each rigion and the CloudFront Distribution
+  * __Route53__ (Global) handle cross Region requests to IGW sitting in each region and the CloudFront Distribution
       * Route53 is Global service
   * __CloudFront__ (Global) caching source linked to S3 bucket.
       * CloudFront is Global service
@@ -37,15 +36,24 @@ tags:
   * 5 __Aurora service__ : each AZ has at least one Aurora service.
       *  The main Aurora  and standby Aurora sits in one Region but splitted into different AZ.
       *  One AZ has the main Aurora, and all the other AZ has the read replica.
+      * Aurora support cross Region Read Replica
+        * https://aws.amazon.com/blogs/aws/new-cross-region-read-replicas-for-amazon-aurora/
   * 2 __DB Subnet Group__ : each region has one
 
 
 ### hands on by creating one VPC in one region that meet the Advanced VPC archi design
 
 * Use wizard to create the VPC and then review the config
+  * choose the wizard to create VPC with 1 pubic subnet and 1 private subnet
+  * select CIDR for each subnet and select same AZ for both subnet
+  * Specify NAT instance type and key pair
+  * Specify S3 Service Endpoint access level (none / public only / private only / both; full access / custom )
 * understanding the Route Table being used / created in Public and Private Subnet
-  * 0.0.0.0/0 for public subnet --> IWG; for Private subnet--> NAT
+  * public subnet的路由表，0.0.0.0/0指向IWG; Private subnet，0.0.0.0/0指向NAT的ENI
+  * 一条s3的请求指向特定的VPC（service endpoint）
+  * 一条本地VPC内部的局部路由
   * route table is explicitly associated to public subnet; route table is implicitly associated to private subnet
+* Check默认的ACL ：allow inbound/outbound everything
 * Check the NAT service being created via wizard
   * Virtulization is using paravirtual ( new EC2 instances are more using HVM )
   * NAT security group by defaut is allow all
@@ -56,7 +64,7 @@ tags:
      * allow inbound http(s) from private subnet
      * allow inbound ssh from current client ip
      * allow outbound http(s) to anywhere
-     * allow all inbound traffic from current security group (???)
+     * allow all inbound traffic from current security group (!!! ???)
   * change the network interface's security group to use the new security group we just created.
      * VPC security group is binding with instance (attach to network interface is the same to attach to instance)
   * review the VPC security group vs ACL (access control list)
@@ -75,16 +83,22 @@ tags:
 * Create the new private subnet sitting in Same VPC but different AZ. (design the size accordingly)
 * Create the new public subnet sitting in Same VPC but different AZ. (design the size accordingly)
 * Review the route table being created for both new Subnets
-  * the route table attached by default with public VPC is wrong ; change it to the other one that routing internet traffic to iwg.
+  * the route table attached by default with public VPC is wrong , it's the route table being used by private subnet; change it to the other one that routing internet traffic to iwg.
 * Create new ACL called "Public NACL" which sits inside existing VPC.
-  * allow inbound http(s) from internet,inbound ssh from client, and 1024-65535 (by ELB health check ???) from internet
-  * allow outbound http(s) to internet, outbound  ssh to all private subnets, 1024-65535 to internet, port 3306(mysql ) to all private subnets
+  * ACL rule has an number, it will be applied using Number sequence
+  * allow inbound http(s) from internet,inbound ssh from client
+  * 1024-65535 (by ELB health check) from internet
+    * https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html
+  * allow outbound http(s) to internet, outbound  ssh to all private subnets, outbound 1024-65535 to __internet__, port 3306(mysql ) to all private subnets
   * associate newly created ACL to 2 public subnets
 * Create new ACL called "private NACL" which sits inside existing VPC
-  * allow inbound MySQL (3306) from both public subnets ; allow inbound ssh from both public subnets; inbound 32768-61000 from internet (NAT)
-  * allow outbound http(s) to internet (???) ; allow outbound 32768-61000 (mysql response) to public subnets;
+  * allow inbound MySQL (3306) from both public subnets ; allow inbound ssh from both public subnets; __inbound 32768-61000 from internet (NAT)__
+  * allow outbound http(s) to internet; allow __outbound 32768-61000 (mysql response)__ to public subnets;
   * associate newly created ACL to 2 private subnets
 * the ACL inbound and outbound rule will have a default deny rule at the end.
+
+* If ping doesn't work, check the ICMP protocol at security group and ACL level
+* If ssh doesn't work, check ACL outbound protocol allow 32768-61000 to internet: which means the ssh respond to the ssh client.
 
 ## 089.mp4 -- creating AutoScaling group in existing VPC ; create ELB to dispatch requests
 
@@ -98,8 +112,9 @@ tags:
   * select newly created security group for web server to attach with
   * configure the health check which used by ELB
   * select none of the existing EC2 instance (because we will use AutoScaling group) and enable cross zone load balancing and connection draining
+
 * edit the load balancer's default configs :
-  * enable loadbalancer generated stickyness with expiration 60 seconds
+  * (this configuration moved to ELB group): enable loadbalancer generated stickyness with expiration 60 seconds
 * create AutoScaling Group by create launch configuration & AutoScaling Group
   * create launch configuration
     * select AMI (search for worldpress AMI)
