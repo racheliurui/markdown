@@ -49,7 +49,7 @@ credential的类型：
 
 ### Group
 
-   * 不能nest group
+   * __不能nest group__
    * 每个account最多100个group
 
 ### Roles
