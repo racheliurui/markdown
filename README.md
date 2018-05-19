@@ -32,3 +32,11 @@ curl -L https://api.github.com/repos/iissnan/hexo-theme-next/tarball/v5.1.2 | ta
 # git add -A; git commit "udpates"
 git push  origin hexo
 ```
+
+## other themes
+
+https://github.com/ptsteadman/hexo-theme-corporate-example
+
+https://www.duyidong.com/2017/03/07/Deploy-Hexo-to-S3/
+
+https://s3-accelerate-speedtest.s3-accelerate.amazonaws.com/en/accelerate-speed-comparsion.html
