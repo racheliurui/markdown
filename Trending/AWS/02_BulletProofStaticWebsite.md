@@ -16,8 +16,8 @@ Tips, set the correct MIME type for uploaded files
 https://developer.mozzila.org/en-US
 search for "complete list of MIME type"
 
-* demo-007 part4: use "Certificate Manager" service to create Certificate (domain.com and *.domain.com)
-* demo-008 part5: create distribution using cloudfront service to help with security(D-DOS??),performance,fail over,attach certs
+* demo-007 part4: use "Certificate Manager" service to create Certificate (give the domain as domain.com and *.domain.com )
+* demo-008 part5: create distribution using cloudfront service to help with security(D-DOS),performance,fail over,attach certs
     * default TTL : default is 24 hours, means refresh from S3 every 24 hours
     * alternative domain names: the domain name purchased
     * SSL certificate: custom SSL certificate (created in previous demo)
@@ -30,3 +30,4 @@ search for "complete list of MIME type"
 ## background www and naked domain names
 
 https://www.sitepoint.com/domain-www-or-no-www/
+In short words, www is the prefix to indicate the url is hosted on internet (in olden days). Now it's not so necessary, if you skip the www prefix, then your host name is called "Naked". Anyway, people might choose to be compatible to both www and naked domain.

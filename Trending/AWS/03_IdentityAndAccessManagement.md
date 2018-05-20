@@ -19,11 +19,10 @@ IAM: __Identity and Access Management__
 * Understand the difference between AWS IAM and customer IAM
 * Understand the difference between aws account and aws iam users
 * IAM is a service.
-* IAM control access by policies which is organized by "statement", it include : resource (like a table, ); action(like access database); effect (like allow)
+* IAM control access by policies which is organized by "statement", it include : resource (like a table); action(like access database); effect (like allow)
 * security compliance: Payment Card Industry (PCI) Data Security Standard (DSS)
 * Auditing : using CloudTrail
-
-credential Report: downloaded excel (the report is generated every 4 hours, so there's delay)
+* Credential Report: downloaded excel (the report is generated every 4 hours, so there's delay)
 
 
 
@@ -32,12 +31,16 @@ credential Report: downloaded excel (the report is generated every 4 hours, so t
 
  如何表示user：
    * arn: amazon resource name， 格式，
-       arn:aws:iam::account-ID-without-hyphens:user/Bill
-   * id --如果用户是命令行创建
+       arn:aws:iam::[accountIDNum]:user/Bill
+       * loads of examples:
+```
+https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html
+```
+   * id --如果用户是命令行创建,则可以拿到用户id
    * 普通的unique的user name
    * never give root access
 
-credential的类型：
+Credential的类型：
    * 密码
    * access key
    * SSH key
