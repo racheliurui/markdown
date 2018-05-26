@@ -40,7 +40,11 @@ https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-l
 Short Pooling definition : (Subset of servers)
 https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html
 
-Queue identifier (format) https://sqs.regionname.amazonaws.com/accountnumber/queuename.uniqueforuser[.fifo]
+Queue identifier (format)
+
+> https://sqs.us-east-2.amazonaws.com/123456789012/MyQueue
+
+https://sqs.regionname.amazonaws.com/accountnumber/queuename.uniqueforuser[.fifo]
 https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-general-identifiers.html
 
 Message ID vs Receipt Handle
@@ -50,9 +54,13 @@ How to check queue Depth (GetQueueAttributes & ApproximateNumberOfMessages)
 https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_GetQueueAttributes.html
 
 Dead letter queue limitations (origional queue type impact dead letter queue type; region & account limitation)
+FIFO queue's dead letter queue will also be FIFO
+Dead letter queue sits in same region with original queue
+Dead letter queue must being created by same account of the original queue
 https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
 
 Cloudwatch integration with SQS (how often metrics are pushed; how to tell if a queue is active; no charge; support all queue types)
+Every 5 min
 https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-monitoring-using-cloudwatch.html
 
 Integration with CloudTrail (what will be loged)

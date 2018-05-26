@@ -33,9 +33,9 @@ IAM: __Identity and Access Management__
    * arn: amazon resource name， 格式，
        arn:aws:iam::[accountIDNum]:user/Bill
        * loads of examples:
-```
-https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html
-```
+
+> https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html
+
    * id --如果用户是命令行创建,则可以拿到用户id
    * 普通的unique的user name
    * never give root access
@@ -65,8 +65,8 @@ Role的定义包含：
    * RoleName: unique name within the current aws account
    * RoleARN: unique within whole AWS
        * arn:aws:iam::<uniqueaccountid>:role/<RoleName>
-   * Trusted Entities: the service which ???
-
+   * Delegation:
+       * Create a role in account that owns the resource; then attach policy to represent the role access; setup trust relationship
 
 ### Identity Federation
 
@@ -81,12 +81,12 @@ Role的定义包含：
 
 * Create User and groups
    Group can attach policy, and users will be added to Group(s)
-   support bulk creating users ( and each user can have their  access key and secret access key which means password )
+   support bulk creating users ( and each user can have their  access key(like public key in keypair) and secret access key(like secret key in key pair) which means password )
 * Create account password policy
     * The password policy is configured at account level, and limitation is for users under that account
     * All users under a certain account will have a unique IAM url used to sign in.
 * Create role
-    Role can represent services under current account, to create a role mean give certain service under current account to access to other resources. (create a role represent certain type of resource, then apply policy to the role to giva access to resource, last???--which missed in the video, I guess should be assign role to instance of certain service. then that service will have access to resource which being defined via policy)
+    Role can represent services under current account, to create a role mean give certain service under current account to access to other resources. (create a role represent certain type of resource, then apply policy to the role to giva access to resource, create trust relationship to allow other resource or user to consume this role.
     Role can delecate the access to resource to allow access between different aws account
 * download credentials report
 
@@ -144,7 +144,7 @@ can setup to send notification regularly to corresponding emails.
 
 * ARN form.
 * How to define policy for a website hosted on AWS
-* maximum number of IAM access keys per user?
+* maximum number of IAM access keys per user? 2
 * one account can have only 1 alias
 * Users need their own access keys(not password !!!) to make programmatic calls to AWS using the AWS Command Line Interface (AWS CLI), the AWS SDKs, or direct HTTP calls using the APIs for individual services.
 * Policy sample definition (009.html)

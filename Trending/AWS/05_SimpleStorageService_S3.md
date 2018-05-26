@@ -20,25 +20,27 @@ S3 is a webstore , not a file system !!
 
 # 025.mp4 - hands on demo on S3 Config
 
-* enable , disable versioning at bucket level
-* before enable version , object has default version id of __null__
-* delete & revert deletion of object
-* list versions for an object, apply a selected version
-* add life cycle rule to selected bucket: which scope in the selected bucket will be moved to what storage after defined days and be deleted from S3 after another defined days.
-* enable logging ( S3 access related logging )
-* add tag to S3 bucket (easy management)
+* Enable , disable versioning at bucket level
+* Before enable version , object has default version id of __null__
+* Delete & revert deletion of object
+* List versions for an object, apply a selected version
+* Add life cycle rule to selected bucket: which scope in the selected bucket will be moved to what storage after defined days and be deleted from S3 after another defined days.
+* Enable logging ( S3 access related logging )
+* Add tag to S3 bucket (easy management)
 * Define cross region replication
-* define events -- SNS/SQS or Lambda
+* Define events -- SNS/SQS or Lambda
 * Requester Pays
 
 # 026.mp4 - hands on demo on S3 Polices and ACL
 
 * Add/Edit/Delete bucket/bucket object permissions (which grantee has what access) --either at bucket level or object level
-* create bucket policy (JSON) -- AWS Policy Editor or copy from samples -- only available at bucket level
+* Create bucket policy (JSON) -- AWS Policy Editor or copy from samples -- only available at bucket level
 
 
-How to spcify a S3 object using ARN,
-https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html
+How to spcify a S3 object using ARN, for example
+arn:aws:s3:::examplebucket/developers/design_info.doc
+
+> https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html
 
 AWS S3 RRS option
 https://aws.amazon.com/s3/reduced-redundancy/
@@ -76,13 +78,13 @@ https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html
 About multi part uploading
 https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html
 
-Difference between : (??)
+Difference between : (ACL is legacy method to control access to S3)
 Bucket ACL/policy
 Object ACL/Policy
 
 Error Message code,
 https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html
-For durability, RRS objects have an average annual expected loss of 0.01% of objects. If an RRS object is lost, when requests are made to that object, Amazon S3 returns a 405 error.
+For durability, RRS objects have an average annual expected loss of 0.01% of objects. If an RRS object is lost, when requests are made to that object, Amazon S3 returns a 405 (Method Not Allowed) error. 
 
 S3 event types
 https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations

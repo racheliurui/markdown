@@ -7,16 +7,15 @@ tags:
 
 # 044.mp4 045.mp4 -- virtual private cloud
 
-
 * Inside a certain region and spanning multiple availble zones
 * Class A/B/C private network ranges; subnet mask
 * Important: aws reserve first 3 and last 1 ip addresses (for example, 0,1,2,3 and 255)
    * 255 is the broadcasting address
    * one address is preserved for Internet Gateway
    * TODO: how this 4 address is preserved???
-* default VPC: 172.31.0.0/16, which means 2^(32-16) - 4 availble ips
+* default VPC: 172.31.0.0/16, which means (2^(32-16) - 4) availble ips
 * 1 VPC can have multiple subnet;
-   * min size is /28, with means 2^(32-28)-1 (forbradcassing) -1( 0 ?? IGW??) =14 available addresses
+   * min size is /28, with means 2^(32-28)-1 (for bradcassing) -1( 0 ?? IGW??) =14 available addresses
 
 ## how to connect to a VPC
 
@@ -25,7 +24,7 @@ tags:
    * Main Route Table and Custom route table
 * NAT Gateway: Network Address Translation (NAT)
    * Internet Gateway is attached to VPC. NAT Gateway sits in a Public Subnet.
-   * NAT gateway is not necessary. instance in Public Subnet can directly access internet via IWG, only only when we want to configure to let instance sits in Private Subnet to have limited access to internet (only connection initiated from private subnet is allowed and must go through NAT), we can configure NAT to control this.
+   * NAT gateway is not necessary. Instance in Public Subnet can directly access internet via IWG, only only when we want to configure to let instance sits in Private Subnet to have limited access to internet (only connection initiated from private subnet is allowed and must go through NAT), we can configure NAT to control this.
    * For any instance sits in a private subnet, they access internet via 0.0.0.0/0 pointing to NAT sits in public subnet; then from NAT instance, they can visit internet.
    * https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html
 

@@ -32,7 +32,7 @@ Terminology,
   * Buy by write/read capacity units
     * Write Capacity needed for a table: Round(itemsize/chargingStandardSize) * (numberOfWritePerSec)
     * Read Capacity needed for a table: Round(itemsize/chargingStandardSize) * (numberOfReadPerSec/IfNotConsisitentReadThen2)
-* Steams: underlying mechanism how it works
+* Streams: underlying mechanism how it works
 * Triggers : linked to Lambda
 
 # 040.mp4 -- DynamoDB Handson
@@ -56,9 +56,12 @@ https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBMapper.
 Read / write Capacity Unit definition
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
 
+(perItemSize/4k) * ItemConsistentReading/Sec = number of reading units
+(perItemSize/1k) * ItemWriting/Sec = number of writing units
+
 Table name rule
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.NamingRules
-
+charactor, number, underscore, dash, dot
 
 Best Practise of design table primary key (partition key and sort key)
 https://aws.amazon.com/blogs/database/choosing-the-right-dynamodb-partition-key/

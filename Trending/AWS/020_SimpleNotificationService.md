@@ -10,10 +10,10 @@ tags:
 * Message being published to Topic via SDK/CLI/Console
 * Subscribed by : SQS (FIFO Queue Not supported); Email (format: Email, Email-JSON); Mobile; HTTP(s); Lambda; SMS
 * Message include,
-   * MessageId, Timestamp, TopicArn, Type,UnsubscribeUrl, MessageBody, Subject,Signature, SignatureVersion
+   * MessageId, Timestamp, TopicArn, Type, UnsubscribeUrl, MessageBody, Subject,Signature, SignatureVersion
 * SNS Mobile Push Notification Steps,
    * Request Credential from Mobile platforms
-   * Request Token (ADM, GCM registration ID;APNS device Token)
+   * Request Token ( ADM, GCM registration ID; APNS device Token)
 
 * ADM(Amazon Device Messaging) -- push to kindle
 * APNS --- push to iOS device

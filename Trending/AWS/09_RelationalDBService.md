@@ -13,7 +13,7 @@ tags:
 * Backup - to S3 (can be encrypted for db or snapshot at rest)
 * Failover - Multi-AZ ; when master fails , standby is promoted , then CName is updated to poiting to standby, then new instance is created to replace the master
 * Read Replica (don't support ms sql and oracle); one DB can have multiple read replicas
-* Rounting using Route53 or customed HAProxy , __not support AWS ELB__
+* Routing using Route53 or customed HAProxy , __not support AWS ELB__
 
 
 # 037.mp4 -- AWS RDS Hands On
@@ -49,7 +49,7 @@ Option groups allows the use of available features within a database. So if you 
 
  * InnoDB storage engine ：  Point-In-Time restore and snapshot restore require a recoverable storage engine and are supported for the InnoDB storage engine only.
  * MyISAM storage engine does not support reliable recovery and can result in lost or corrupt data when MySQL is restarted after a recovery, preventing Point-In-Time restore or snapshot restore from working as intended. However, if you still choose to use MyISAM with Amazon RDS, snapshots can be helpful under some conditions.
- * MyISAM performs better than InnoDB if you require intense, full-text search capability. 
+ * MyISAM performs better than InnoDB if you require intense, full-text search capability.
  * The Federated Storage Engine is currently not supported by Amazon RDS for MySQL.
 
 * 3306是MySQL的默认端口；3389是RemoteDesktop的默认端口

@@ -57,7 +57,7 @@ tags:
 
 ## Demo4: Health check
 
-* delete other records only leave the one pointing to EC2 ip
-* change the routing policy to "FailOver" and assign this target as "Primary"
+* Delete other records only leave the one pointing to EC2 ip
+* Change the routing policy to "FailOver" and assign this target as "Primary"
 * Assiciate the record set with Health Check definition
 * Create another record poiting to CloudFront ; with routing policy to "Failover" and "Secondary"

@@ -13,7 +13,7 @@ tags:
 
 ## CM Model
 
-* CM Model
+* CM Model (configuration management)
  * Stack: a set of intances and applications
  * Layers: reusable subcomponent of stack
  * Instances: can participate multiple layer

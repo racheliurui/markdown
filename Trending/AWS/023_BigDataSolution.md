@@ -11,7 +11,7 @@ tags:
 * Data Analysis: EMR ; ElasticSearch; QuickSight BI; Amazon Machine Learning; Lambda
 * Data Streaming: Kinesis Streams
 
-## Readshift
+## Redshift
 
 * Petabyte level
 * PostgreSQL based
@@ -20,7 +20,7 @@ tags:
 
 ## EMR (Elastic Map Reduce)
 
-* fully managed hadoop service
+* Fully managed hadoop service
 * Clusters can be automatically deleted upon task finish
 * Data processing framework: Hadoop Mapreduce & Spark
 * Storage options:   HDFS /  EMRFS (S3 based) / EC2 local file system

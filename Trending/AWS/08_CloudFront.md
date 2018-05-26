@@ -11,7 +11,7 @@ CloudFront = Content Delivery Network by AWS
 
 CloudFront deployed on Edge locations (number of Edge locations>Available zones> Regions)
 
-* Source  can be S3 , HTTP Server on AWS or outside AWS
+* Source can be S3 , HTTP Server on AWS or outside AWS
 * CloudFront only cach GET and HEAD requests, for POST,PUT,DELETE cloudfront will only proxy
 * Different combinations to cach for static / dynamic websites
   * For static, we can select only cache documents , exclude HTML/css/code; or set TTL and cache all
