@@ -17,7 +17,7 @@ tags:
 
 * Free and opensource
 * Object max size 1MB
-* total max size 7 TiB
+* Total max size 7 TiB
 * No persistence ; easy to adding node
 
 ## Redis Store option

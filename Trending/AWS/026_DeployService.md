@@ -7,9 +7,9 @@ tags:
 
 # 077.mp4 078.mp4 - Deployment Overview
 
-* infrastructure as code
-   * Cloudformation templates;Cloudfrmation designer;
-* Continious Deployment
+* Infrastructure as code
+   * Cloudformation templates;Cloudformation designer;
+* Continous Deployment
    * CodeCommit
    * CodePipeline
    * ElasticBeanStalk
@@ -22,4 +22,5 @@ tags:
 
 
 ELB and ElasticBeanStalk work together
+auto create ELB config
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.managing.elb.html

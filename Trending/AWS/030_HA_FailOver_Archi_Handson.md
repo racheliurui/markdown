@@ -75,7 +75,7 @@ tags:
 * select the existing public subnet to contain this new NAT instance
 * Disable "Assign public IP" because we will attach existing network interface to it
 * Network Interfaces section: attach existing one to this new NAT instance
-* Select the newly created Security Group , the NAT security group (???)
+* Select the newly created Security Group , the NAT security group
 * Review and launch the instance
 
 ## 088.mp4 -- In the same region, create subnet in another AZ and create ACL for all subnets
@@ -92,9 +92,9 @@ tags:
   * allow outbound http(s) to internet, outbound  ssh to all private subnets, outbound 1024-65535 to __internet__, port 3306(mysql ) to all private subnets
   * associate newly created ACL to 2 public subnets
 * Create new ACL called "private NACL" which sits inside existing VPC
-  * allow inbound MySQL (3306) from both public subnets ; allow inbound ssh from both public subnets; __inbound 32768-61000 from internet (NAT)__
-  * allow outbound http(s) to internet; allow __outbound 32768-61000 (mysql response)__ to public subnets;
-  * associate newly created ACL to 2 private subnets
+  * Allow inbound MySQL (3306) from both public subnets ; allow inbound ssh from both public subnets; __inbound 32768-61000 from internet (NAT)__
+  * Allow outbound http(s) to internet; allow __outbound 32768-61000 (mysql response)__ to public subnets;
+  * Associate newly created ACL to 2 private subnets
 * the ACL inbound and outbound rule will have a default deny rule at the end.
 
 * If ping doesn't work, check the ICMP protocol at security group and ACL level
@@ -102,10 +102,10 @@ tags:
 
 ## 089.mp4 -- creating AutoScaling group in existing VPC ; create ELB to dispatch requests
 
-* create security group for the web server EC2 instances
+* Create security group for the web server EC2 instances
   * inbound http(s) from internet; ssh from local client; all traffic from itself
   * outbound all traffic to anywhere
-* create Load Balancer (EC2 --> Network & Security --> Load Balancers)
+* Create Load Balancer (EC2 --> Network & Security --> Load Balancers)
   * select current VPC for this new Load balancer to sit in
   * select dispatch HTTP protocol from 80 to 80 port (if https select , we need to upload ssl cert to ELB)
   * select both of our public subnets as the dispatching targets
@@ -113,9 +113,9 @@ tags:
   * configure the health check which used by ELB
   * select none of the existing EC2 instance (because we will use AutoScaling group) and enable cross zone load balancing and connection draining
 
-* edit the load balancer's default configs :
+* Edit the load balancer's default configs :
   * (this configuration moved to ELB group): enable loadbalancer generated stickyness with expiration 60 seconds
-* create AutoScaling Group by create launch configuration & AutoScaling Group
+* Create AutoScaling Group by create launch configuration & AutoScaling Group
   * create launch configuration
     * select AMI (search for worldpress AMI)
     * configure the instance configurations (monitoring / role / script ), disable assign public ip

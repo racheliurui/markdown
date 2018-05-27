@@ -94,7 +94,7 @@ EMR will use HDFS or S3 to do mapreduce.
 
 ### estimating number of mappers
 
-* given the block size of S3 or HDFS, we know how a given file is splitted. Then we can calculate the mapper number needed.
+* Given the block size of S3 or HDFS, we know how a given file is splitted. Then we can calculate the mapper number needed.
 * Or the JobTracker GUI or output will tell
 
 ### picking EMR type
@@ -128,8 +128,8 @@ EMR will use HDFS or S3 to do mapreduce.
 
 # 6. Performance Optimization
 
-* data structure is key for Performance
-* hadoop is batch-processing measured by hours to days, if you need improve time by a few minutes to meet SLA, then look at Storm or Spark
+* Data structure is key for Performance
+* Hadoop is batch-processing measured by hours to days, if you need improve time by a few minutes to meet SLA, then look at Storm or Spark
 * EMR charges on hourly increments.
 * make use of task node
 
