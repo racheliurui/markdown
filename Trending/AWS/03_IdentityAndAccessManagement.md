@@ -158,7 +158,7 @@ https://My_AWS_Account_ID.signin.aws.amazon.com/console/
 ## Integrate with AD
 
 
-![image of integrate with AD](images/03_IntegrateWithMicrosoftAD.png)
+![image of integrate with AD](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/03_IntegrateWithMicrosoftAD.png?raw=true)
 
 > https://youtu.be/Iu-CpNFMELs
 

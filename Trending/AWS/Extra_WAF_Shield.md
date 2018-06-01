@@ -67,7 +67,7 @@ Common use case for WAF,
 
 ### DEMO-1 WhiteList good user
 
-![WAF config](images/Extra_WAF_WAFConfig.png)
+![WAF config](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/Extra_WAF_WAFConfig.png?raw=true)
 Define conditions --> attach condition to rules --> attach rules to WEB ACLs, associate WEB ACLs to AWS services (S3, CloudFront, ELB)
 
 ### DEMO-2 Virtual Patching
