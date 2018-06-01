@@ -86,15 +86,19 @@ Define "Rate Based Rule" with the "/login" URI match condition, set 2000 times /
 # OWASP Top 10
 
 * A1 : Injection
+
 * A2 : Broken Authentication and Session Management
   * Hard to distinguish legistimate Users
   * Automate update of black list of token When
     * different location with same token
     * abnormal login rate
+
 * A3 : Cross Site Scripting (XSS)
   * for example, a blog platform has a user published a blog with embeded script loading from his own website to run in browser (who ever browse this perticular blog) and exploit the key inputs
-  * It's easy to block content with <Script> tag from Body, querystring or cookie; but needs to be carefully thinking about other requirement like SVG graphics (using <script> tag)
+  * It's easy to block content with Script tag from Body, querystring or cookie; but needs to be carefully thinking about other requirement like SVG graphics (using script tag)
+
 * A4 : Broken Access Control
+
   * http://mywebsite/editprofile?userid=1234 ; once authenticated, user 1234 can access http://mywebsite/editeprofile?userid=4567
     * __Mitigate__: Hard, possibly match signature
   * http://mywebsite/download?file=file1.pdf ; once authenticated, user can manipulate the file path and expose any file on Server (http://mywebsite/download?file=../../../../etc/passwd)
