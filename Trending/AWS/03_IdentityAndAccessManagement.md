@@ -154,3 +154,27 @@ can setup to send notification regularly to corresponding emails.
 
 Sign in page url:
 https://My_AWS_Account_ID.signin.aws.amazon.com/console/
+
+## Integrate with AD
+
+
+![image of integrate with AD](images/03_IntegrateWithMicrosoftAD.png)
+
+> https://youtu.be/Iu-CpNFMELs
+
+3 Options:
+* Option1, EC2 join in on-promise AD domain
+   * Expose a lot of ports as needed by EC2 on cloud
+   * AD connector
+     * Initial Solution:  LDAP forward to on-promise AD
+     * EC2 domain join
+* Option2, Run AD on EC2 (Paas)
+   * Trust model Or Replication Model
+   * Support NetBIOS name resolution
+* Option3, Use AWS AD (SAAS) (released at Dec 2015)
+   * Trust model : no trust no replication
+   * Work well with other Microsoft SAAS on AWS (MS SQL server)
+   * one way trust and 2 way Trust
+     * one way trust is used to access on cloud resource using local AD account
+     * 2 way trust is used when cloud resource needs to access on-promise resource (say, printer)
+   * limitation (at 2016): don't support ldaps; max 5w users
