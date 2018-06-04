@@ -6,30 +6,44 @@ tags:
 ---
 
 
-# 024.mp4 - S3 overview
+# S3 Overview
 
 
 S3 is a webstore , not a file system !!
 
-## cross region replication
+S3 -- writing concurrency
+* "Eventually Consistency": make sure concurrent write will eventually get synced
+* "Read after Write Consistency": make sure read access do not need to wait until write consistency is archived.
 
-* New feature
+## S3 Event Notification
+
+* Configure when event is triggerred
+* Cifigure filter : File Prefix (Path and name) , Suffix
+* Notification can integrate with Lambda, SQS , SNS
+
+## LifeCycle Management
+
+S3 --> S3 IA --> Glacier
+
+* S3 IA has same durability 11 9's with S3 (Availability is lower as 2 9's)
+* You can move object to IA by life cycle policy or direct upload with parameter to specify to save in IA
+
+## Cross region replication
+
 * ACL (Access Control List ) policies, if it's S3 encryption , it will be copied ; if it's using KMS then you have to handle manually by your self
 * Any existing objects before turn on this feature needs to be copied manually to new region
+* Versioning must be enabled
+* The remote bucket can be managed by different user
+* If delete object and specify the version , then the remote bucket won't delete that object (have to manually )
+
+* You can specify A bucket replicate to B and then specify B replicate to A. This will result in A and B synced.
+* Once the replication is turned on , you can head-object to S3 object and check the ReplicationStatus metadata
+
+![cross Region Replication cli](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/05_S3_CrossRegionReplication.png?raw=true)
+
+![cross Region Replication policy](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/05_S3_CrossRegionRepli_Policy.png?raw=true)
 
 
-# 025.mp4 - hands on demo on S3 Config
-
-* Enable , disable versioning at bucket level
-* Before enable version , object has default version id of __null__
-* Delete & revert deletion of object
-* List versions for an object, apply a selected version
-* Add life cycle rule to selected bucket: which scope in the selected bucket will be moved to what storage after defined days and be deleted from S3 after another defined days.
-* Enable logging ( S3 access related logging )
-* Add tag to S3 bucket (easy management)
-* Define cross region replication
-* Define events -- SNS/SQS or Lambda
-* Requester Pays
 
 # 026.mp4 - hands on demo on S3 Polices and ACL
 
@@ -45,38 +59,23 @@ arn:aws:s3:::examplebucket/developers/design_info.doc
 AWS S3 RRS option
 https://aws.amazon.com/s3/reduced-redundancy/
 
-overage fees
-https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html
-Pricing for Amazon S3 is designed so that you don't have to plan for the storage requirements of your application. Most storage providers force you to purchase a predetermined amount of storage and network transfer capacity: If you exceed that capacity, your service is shut off or you are charged high overage fees. If you do not exceed that capacity, you pay as though you used it all.
 
-Amazon S3 charges you only for what you actually use, with no hidden fees and no overage charges. This gives developers a variable-cost service that can grow with their business while enjoying the cost advantages of Amazon's infrastructure.
 
 
 S3 Bucket URL
 https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html
 
-Bucket naming convention
-https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
 
-S3 Object consists of,
-https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html
 
-S3 Object naming
-https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html
 
 Difference of Durability & Availability & Concurrent facility fault torlerance
 https://aws.amazon.com/s3/reduced-redundancy/
 
-Format of the CORS configuration
-https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html#how-do-i-enable-cors
 
 How to share object with others via pre-signed URL
 https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html
 * use (your credential + expiretime) to create the url
 
-
-About multi part uploading
-https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html
 
 Difference between : (ACL is legacy method to control access to S3)
 Bucket ACL/policy
@@ -84,16 +83,31 @@ Object ACL/Policy
 
 Error Message code,
 https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html
-For durability, RRS objects have an average annual expected loss of 0.01% of objects. If an RRS object is lost, when requests are made to that object, Amazon S3 returns a 405 (Method Not Allowed) error. 
+For durability, RRS objects have an average annual expected loss of 0.01% of objects. If an RRS object is lost, when requests are made to that object, Amazon S3 returns a 405 (Method Not Allowed) error.
 
-S3 event types
-https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations
 
-Best practise to max the S3 performance (Key naming)
+## Best practise to max the S3 performance
+
+### Key naming
+Useful when your S3 reach 100 TPS (100 request per second)
 https://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.html
 * S3的object的path类似于key，为了能够均匀分布使得存取性能优越可以：
 1） 加hash在key前面
 2） reverse key string
+
+### __S3 Transfer Accerleration__
+* Once enabled, it will give a new endpoint;
+* it support automatically route upload to closest location.(Make use of Edge Locations)
+
+
+
+
+###  multi part uploading
+https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html
+
+Get request: put Range in the header
+
+### Make use of CloudFront  
 
 Difference between ElasticCache and Cloudfront --- which is the destination to cache S3 objects?
 ElastiCache uses redis and memcached to improve the performance of web applications by allowing you to retrieve information from fast, managed, in-memory data stores, instead of relying entirely on slower disk-based databases.
@@ -106,3 +120,50 @@ https://acloud.guru/forums/aws-certified-solutions-architect-associate/discussio
 S3 detect data corruption
 Content-MD5 Checksum and CRCs to detect data corruption
 https://aws.amazon.com/s3/faqs/#
+
+# Hands-On
+
+* Enable , disable versioning at bucket level
+* Before enable version , object has default version id of __null__
+* Delete & revert deletion of object
+* List versions for an object, apply a selected version
+* Add life cycle rule to selected bucket: which scope in the selected bucket will be moved to what storage after defined days and be deleted from S3 after another defined days.
+* Enable logging ( S3 access related logging )
+* Add tag to S3 bucket (easy management)
+* Define cross region replication
+* Define events -- SNS/SQS or Lambda
+* Requester Pays
+
+## New feature
+
+Retrieve data within minutes from Glacier
+https://aws.amazon.com/about-aws/whats-new/2016/11/access-your-amazon-glacier-data-in-minutes-with-new-retrieval-options/
+
+S3 Analytics :  storage data analysis
+  * Category the access pattern by object prefix,name,bucket or tag to help you create proper rule
+
+S3 Inventory:
+  * Save the money of List API when you have loads of object.Generate List every day (or week depending on your config)
+  * need to config policy to allow S3 to write inventory list report into your bucket
+
+Object Tag:
+  * Max 10 tag per object
+  * Tag can be used in LifeCycle management, Access Control or Storage Analysis
+
+CloudTrail: S3 Data Events:
+  * Object level events
+  * Security and Audit purpose
+
+CloudWatch: S3 Metrics
+  * Not free; $0.3 per metrics
+  * every 1 min
+
+## VPC endpoint for S3
+
+* Security Control
+  * VPC can specify allow certain action to specific S3
+  * S3 can specify allow  which vpc to access it.
+
+# Reference
+
+> 024.mp4 - S3 overview

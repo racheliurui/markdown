@@ -12,15 +12,15 @@ tags:
 
 | Threats | DDoS | Application Attacks | Bad Bots|
 |---|---|---|---|
-|Application Layer| HttpFloods <<-- Shield Advanced| SQL Injection; Sensitive Data Explosure; Social Engineering; Application exploits  <<-- WAF | Crawler; Content Scraper; Scanner&Probe <<--WAF|
-|Network Layer| Reflection; SSLAbuse; Amplification; SlowLoris; Layer4Floods <<-- Shield Standard ||
+|Application Layer(7)| HttpFloods <<-- Shield Advanced| SQL Injection; Sensitive Data Explosure; Social Engineering; Application exploits  <<-- WAF | Crawler; Content Scraper; Scanner&Probe <<--WAF|
+|Network Layer (3&4)| Reflection; SSLAbuse; Amplification; SlowLoris; Layer4Floods <<-- Shield Standard ||
 
 
 # DDOS
 
  * Layer 3/4 DDoS
-   * SYN/UDP Floods
-   * reflection Attacks
+   * SYN/UDP Floods: A SYN flood attack works by not responding to the server with the expected ACK code， cause the server waiting for ACK for ever(timeout) and exhaust server resources.
+   * reflection Attacks: trusted entities use shared mutual key, when faker is challenged to response using mutual key, he will send the orginal challenge to any server using same mutual key as a challenge, and get the response to respond to original request.
 * Layer 7 DDoS
 
 # Key Features
@@ -28,10 +28,13 @@ tags:
 ## AWS Shield
 
 * Standard : layer 3/4 protection
+  * Always on : heuristics-based anomal dectection; baseling
 * Advanced : layer 7 protection
   * with AWS Shield, WAF is free
   * DDoS Scaling up free (report and refund)
-  * Available when you have App ELB, Classic ELB, CloudFront, S3
+  * Available when you have App ELB, Classic ELB, CloudFront, S3 and Rout53
+  * Integrate with Cloudwatch to have metrics and report about the attack
+  * Billing : multi accounts shared in one enterprise can share the service once enterprise bought this services
 
 ## AWS WAF
 
