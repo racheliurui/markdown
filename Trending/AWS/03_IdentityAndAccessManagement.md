@@ -1,4 +1,4 @@
-title: AWS - iam
+title: AWS - IAM
 date: 2018-02-07 09:13:23
 tags:
 - AWS
@@ -178,3 +178,57 @@ https://My_AWS_Account_ID.signin.aws.amazon.com/console/
      * one way trust is used to access on cloud resource using local AD account
      * 2 way trust is used when cloud resource needs to access on-promise resource (say, printer)
    * limitation (at 2016): don't support ldaps; max 5w users
+
+# Federation
+
+## Options
+
+### Option 1, Simple AD
+
+* Microsoft AD Compatible;
+  * Can't set up trust bettwen M AD and Simple AD
+  * Don't support schema extention, MFA, ldaps
+* Cheapest Option, suitable for <5000 users
+
+### Option 2, Microsoft AD
+
+* Support trust with M AD
+* Don't support schema extention, MFA
+* Suitable for >5000 users and need trust with on-premise M AD
+
+### Option 3, AD Connector
+
+* Proxy service to directly use on-premise M AD
+* Support MFA
+
+### Option 4: SAML : Security Assertion Markup Language  
+
+* Identity provider and AWS build up relationship in advance
+* login flow will use Identify provider's service to do the authentication
+
+## How to plan the federation
+
+Choose your SAML provider : for example ADFS, Active Directly
+
+### Federation High Level Steps
+
+![SAML process](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/03_IAM_SAML.png?raw=true)
+
+* Prepare SAML provider in your network
+* Config SAML provider in AWS IAM
+* Config Roles for your federated users
+* Create Groups in AD matching IAM Roles
+* Config SAML IdP (Identity provider) & create assertions for SAML auth response
+* Post SAML assertion result to AWS login url
+
+So when user raise a request, it will be mapped to a group, and that group is mapped to IAM role.
+
+
+
+
+
+
+# References
+
+> AWS AD federation
+> https://www.youtube.com/watch?v=ytSjsEER-y0
