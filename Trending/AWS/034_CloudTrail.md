@@ -14,7 +14,14 @@ Logs:
 * to whom (resource)
 * where (region)
 
+
+
 Helps : security , compliance , troubleshooting
 
 * Persist into S3 as JSON format and using server side encryption.
 * integrate with CloudWatch logs (to generate alarms or to send to Kinesis) and SNS
+
+
+
+For CloudTrail logging for S3 objects,
+  * $0.1 per 100000 data events

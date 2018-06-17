@@ -31,13 +31,16 @@ S3 --> S3 IA --> Glacier
 ## Cross region replication
 
 * ACL (Access Control List ) policies, if it's S3 encryption , it will be copied ; if it's using KMS then you have to handle manually by your self
-* Any existing objects before turn on this feature needs to be copied manually to new region
-* Versioning must be enabled
+* Any existing objects before turn on this feature needs to be copied manually to new region (only replicate new PUT)
+* __Versioning must be enabled__
 * The remote bucket can be managed by different user
-* If delete object and specify the version , then the remote bucket won't delete that object (have to manually )
+* Can replicate objects only with certain prefix (folder)
+* If delete object and specify the version , then the remote bucket won't delete that object (have to manually );
+    * From another material, it's said "delete and life cycle actions are not replicated"
 
 * You can specify A bucket replicate to B and then specify B replicate to A. This will result in A and B synced.
 * Once the replication is turned on , you can head-object to S3 object and check the ReplicationStatus metadata
+* Very useful feature when you want to accelerate upload to a remote region, upload to local region then replicate to remote
 
 ![cross Region Replication cli](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/05_S3_CrossRegionReplication.png?raw=true)
 
@@ -94,6 +97,19 @@ https://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations
 * S3的object的path类似于key，为了能够均匀分布使得存取性能优越可以：
 1） 加hash在key前面
 2） reverse key string
+
+Sample of anti-pattern
+
+All the files will be saved on same partition which not favor of concurrent searching. Especially when query reach 100TPS , must not allow below naming converntion.
+
+```
+<my-buckt>/2018-0601-001.png
+<my-buckt>/2018-0601-002.png
+<my-buckt>/2018-0601-003.png
+<my-buckt>/2018-0602-001.png
+<my-buckt>/2018-0601-002.png
+```
+
 
 ### __S3 Transfer Accerleration__
 * Once enabled, it will give a new endpoint;

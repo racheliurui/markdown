@@ -155,7 +155,7 @@ can setup to send notification regularly to corresponding emails.
 Sign in page url:
 https://My_AWS_Account_ID.signin.aws.amazon.com/console/
 
-## Integrate with AD
+## Integrate with AD - Best Practise
 
 
 ![image of integrate with AD](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/03_IntegrateWithMicrosoftAD.png?raw=true)
@@ -222,13 +222,28 @@ Choose your SAML provider : for example ADFS, Active Directly
 * Post SAML assertion result to AWS login url
 
 So when user raise a request, it will be mapped to a group, and that group is mapped to IAM role.
+When a user belongs to multiple group, and then the group will be mapped to multiple IAM role, user will have option to signin with one role.
 
+You can use aws CLI with SAML ( the session will be persisted by default for 60 min)
 
+# AWS Active Directory deep dive
 
-
+* When create, 2 options
+ * Option 1, create AWS Simple Directory
+     * When create , specify VPC and 2 subnets (in different AZ)
+     * for linux to join in the AWS simple directory, need install SSSD and use SSSD to join in the domain (need reboot)
+     * for windows, when create ec2 instance, you can specify the AWS simple directory
+ * Option 2, create AD connector to on premise AD
+     * pointing to MS AD (need VPN), and also need specify VPC and 2 subnets.
 
 
 # References
 
 > AWS AD federation
 > https://www.youtube.com/watch?v=ytSjsEER-y0
+
+> Best Practise of integrate with MS AD (2016 Nov)
+> https://youtu.be/Iu-CpNFMELs
+
+> AWS AD deep dive
+> https://youtu.be/CY-xvo8Cc54

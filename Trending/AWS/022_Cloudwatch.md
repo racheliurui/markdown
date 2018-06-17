@@ -92,6 +92,10 @@ Cloudwatch Event vs Cloudwatch Log , what's the relationship
     * Rules:  matching
     * target: SNS/SQS; Kinesis; Lambda(limited region to support Lambda)
 
+# Bill
+
+$0.3 Per metric per month
+
 # References
 
 > 066.mp4 067.mp4

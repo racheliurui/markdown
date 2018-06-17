@@ -20,6 +20,12 @@ tags:
 * depending on project language & framework support
 * Redis feature is superset of Memcached
 
+## Memcached Vs Redis
+
+* Store json
+  * in Memcached , use serialized string
+  * in Redis , use hash
+
 ## Memcached (mem cache d) store Option
 
 * Free and opensource
@@ -40,6 +46,10 @@ tags:
    * Failover is automatic, will chose the read replica with lowest latency and will switch the dns automatically
 * API provided to query all read replica endpoints
 * Sharding : 16384 sharding slots (automatic client sharding; developer must use Redis Cluster Client )
+
+* Standard Redis use case
+ * Leaderboard
+ * Counters ; like & dislike
 
 ### Redis key feature
 
@@ -86,6 +96,55 @@ Redis Multi-AZ with Auto Failover
 
 * GEO advertising (Redis support GeoSpacial )
 
+# Architecture
+
+* Master Node +  read replica (also as fail over node)
+* Cluster mode : data will be sharded
+
+## how to use Cluster Mode
+
+* 16384 hash slots for keys ; slots are distributed across cluster into shards
+* MUST USE __Redis Cluster Client__
+   * the client will store a map with shards , like
+
+  ```
+    shard1  = slot 1-3276
+    shard2 = slot 3277- 6553
+  ```
+* a cluster can have __max=15 shards; max 5 replicas__
+
+## How to migrate
+
+* Migrate from single server mode to cluster mode
+> Create new cluster mode cluster --> Snapshot old one --> restore snapshot on new mode cluster--> update client --> delete old one
+
+* Migrate from cluster mode shard N to shard M
+
+> Create new cluster mode cluster --> Snapshot old one --> restore snapshot on new mode cluster--> delete old one
+
+
+# Tuning
+
+* set reserved memory to 30%
+* Swap should be 0 or very low ; if not scale up
+* read replica deploy to different AZ with master
+* take snapshot from read replica
+* __Odd Number__ of shards (support even number but not recommended)
+* __Russian Doll Caching__ : The technique of nesting fragment caches to maximize cache hits is known as russian doll caching. By nesting fragment caches, it ensures that caches can be reused even when content changes.
+* __Thundering Herd__ : sudden rise of large # of cache miss --> Spike in database load
+   * App startup --> script to populate cache
+   * adding/removing nodes --> Graduate scale nodes
+   * key expiration (TTL ) --> Randomize the title
+   * out of cache memories --> monitor cache evictions
+* Failover requires updating DNS CName ; so careful with application caching the CName 
+
+# Caching Strategies with Database
+
+Option 1: Caching the row
+Option 2: Caching transformed Object like json string
+Option 3: Caching serialized application object
+Option 4: Caching as Redis specific data type (like sorted set)
+
 # Hands on
 
 ```
@@ -98,7 +157,9 @@ Step 2: Update /etc/php.ini file params:
 session.save_handler = memcache session.save_path = "tcp://elasticache-memcache-node1-endpoint:11211,tcp://elasticache-memcache-node2-endpoint:11211, etc."
 
 Step 3: Configure php.d/memcache.ini param values:
-memcache.hash_strategy = consistent memcache.allow_failover = 1 memcache.session_redundancy = 3
+memcache.hash_strategy = consistent
+memcache.allow_failover = 1
+memcache.session_redundancy = 3
 
 Step 4: Restart httpd
 e.g. etc/init.d/httpd restart
@@ -112,3 +173,8 @@ e.g. etc/init.d/httpd restart
 # Reference
 
 > https://youtu.be/e9sN15a7utI
+
+> Deep Dive
+> https://youtu.be/zmDUDSYnAv4
+
+> Code Sample
