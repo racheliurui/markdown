@@ -15,13 +15,15 @@ __Inventory__: Cold __index__ of archives (refresh every 24 hours)
 
 1) SDK / API
 2) S3 Lifecycle (Bucket Level or Object Level)
+  * new feature: Archive S3 object by tag
 3) 3rd party tools & Gateways
 
 # Upload to glacier
 
 * Make use of description to persist metadata (in case local index is corrupted)
 * Aggregate data into MBs , small data will have loads of overhead when persist into glacier
-* Consider to persist file checksum with index locally ; this also helps to retrive data using range head
+* Consider to persist file checksum with index locally ;
+* Consider to persist file offset when files are aggregated, this helps to retrive data using range head
 * Use multi-part upload
 
 
