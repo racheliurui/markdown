@@ -5,6 +5,18 @@ tags:
 - OpsWorks
 ---
 
+
+# DeepDive
+
+* Difference with Chef Server
+  * Can be agentless (push model)
+* Push Json format event to define to target status
+  * Setup event 
+  * Config event
+  * Deploy event
+  * Undeploy event
+  * Shutdown event
+
 # 054.mp4 055.mp4 --OpsWorks Overview
 
 

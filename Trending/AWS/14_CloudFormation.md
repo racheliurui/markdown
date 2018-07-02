@@ -5,7 +5,8 @@ tags:
 - CouldFormation
 ---
 
-# 047.mp4 048.mp4 - CloudFormation Overview
+
+# CloudFormation Overview
 
 JSON format definition about what service needs to be deployed
 Infra as code
@@ -56,3 +57,38 @@ Infra as code
       * go through the wizard to select from existing resources as template to form the new template
       * note: it won't define paramteters (directly copy from the existing resources)
   * Launch the stack using the template created by CloudFormer
+
+# CloudFormation Desinger
+
+* Visualize the Design
+* Can be used to update existing stack
+
+# Extend with custom resources
+
+Capability to create resource that implement aws defined create/update/rollback/delete and metadata
+
+Standard Senario: use lambda
+
+# Security
+
+Policy example
+* limit an user to only have access to create stack using template from certain bucket
+* limit a user to only can update a stack using a specific yml from a certain bucket
+
+IAM policy example
+* limit type of resources the user can create
+
+# Best Practise
+
+* reuse accross Region
+* Pseudo parameters (make use of the environment parameters)
+* Use Mappings
+* Use Conditionals
+
+
+# References
+
+>047.mp4 048.mp4
+
+> CloudFormation Designer
+>https://youtu.be/fVMlxJJNmyA
