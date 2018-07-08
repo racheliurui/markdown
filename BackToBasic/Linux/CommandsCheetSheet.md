@@ -36,3 +36,13 @@ disk
 part
 lvm
 rom
+
+# SSH Tunnels
+
+https://scriptingosx.com/2017/07/ssh-tunnels/
+
+```mac shell
+$ ssh  -N -L localhost:8080:localhost:80 -i ~/.ssh/ec2Test.pem ec2-user@ec2publicip.us-east-2.compute.amazonaws.com
+```
+
+Setup test env
