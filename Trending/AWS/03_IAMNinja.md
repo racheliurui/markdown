@@ -5,6 +5,32 @@ tags:
 - IAM
 ---
 
+# 10 IAM best practises
+
+# Identity and Credential Management
+
+1. Create Individual Users
+2. Configure a credential policy
+3. Rotate the credentials Regularly
+4. Enable MFA for privileged users (software or hardware)
+5. Manage permissions by group
+6. Grant least privilege
+7. Use IAM roles to share access; (benefit, no password share and no need to long-term store credentials)
+  * For example, PROD env account trust Dev env account; and then config a role to have access to database; Dev account then assign certain user to assume the role to manage the database.;
+8. Use IAM roles for EC2 instance.(launch the EC2 with role)
+9. Use CloudTrail to get logs of API calls
+10. Reduce or remove the use of root credential
+
+* fine grained access control by resource tags
+
+# Account management
+
+
+
+# Reference
+
+>
+https://youtu.be/SGntDzEn30s
 
 # Overview
 
