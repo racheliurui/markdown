@@ -5,6 +5,19 @@ tags:
 - VPC
 ---
 
+# VPC enhancements
+
+## Elastic Network Adapter
+
+* PCI device to support variable speed
+* If you are not using AWS AMI , you need to install the driver to get best performance
+* HVM instance can have access to AWS 10Gbps pysical network card
+* Only high end EC2 support ENA ; you can manually build and install the driver
+* There's only enable (there's no disable after enabled)
+
+# Reference
+>https://youtu.be/CBmSl3O-AhI
+
 # 044.mp4 045.mp4 -- virtual private cloud
 
 * Inside a certain region and spanning multiple availble zones

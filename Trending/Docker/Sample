@@ -1,0 +1,10 @@
+FROM anapsix/alpine-java
+COPY ./Archi-Linux64-4.2.tgz /app
+
+CMD cd /app
+CMD gzip -d Archi-Linux64-4.2.tgz
+CMD tar -xvf Archi-Linux64-4.2.tar
+
+
+
+CMD python /app/app.py

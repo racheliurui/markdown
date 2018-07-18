@@ -3,8 +3,11 @@ date: 2018-07-08 11:13:23
 tags:
 - AWS
 - CloudFormation
-- S3
+- EC2
 ---
+
+ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com
+
 
 # Cloudformation for EC2
 
