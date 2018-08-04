@@ -5,6 +5,136 @@ tags:
 - VPC
 ---
 
+# VPC Deep Dive
+
+Backgroud of VPC: 2009 aws lanched VPC and then simplified to create a default VPC to every account.
+
+## create a VPC
+
+```aws cli
+aws ec2 describe-account-attribute
+aws ec2 create-vpc --cidr 10.0.0.1/16
+```
+
+## command to create an IPSec VPN
+
+```aws cli
+aws ec2 create-vpn-gateway --type ipsec.1
+aws ec2 attach-bpn-gateway --vpn vgw-f9da06e7 --vpc vpc-c15180a4
+aws ec2 create-customer-gateway --type ipsec.1 --public 54.64.1.2 --bgp 6500  
+aws ec2 create-vpn-connection --vpn vgw-f9da06e7 --cust cgw-f4d905ea --t ipsec.1
+```
+
+## command to create direct connect
+
+```aws cli
+aws directconnect create-connection --loc EqSE2 -b 1Gbps --con My_First
+aws directconnect create-private-virtual-interface --con dxcon-fgp13h2s --new VirutalInterfaceName=foo,vlan=10,asn=60,authkey=testing, amazonAddress=192.168.0.1/24,customerAddress=192.168.0.2/24,VirtualGatewayId=vgw-f9da06e7
+```
+
+## Combine above 2 connectons
+
+* We can setup 1 direct connect plus 1 vpn between aws vpc and on-promise network.
+
+## Configure VPC routing table
+
+* Each VPC will have 1 default route table connected with all subnets.
+
+## Further step: create internet gateway to enable VPC's internet connection
+
+```aws cli
+aws ec2 create-internet-gateway
+aws ec2 attach-internet-gateway --internet igw-5a1ae13f --vpc vpc-c15180a74
+aws ec2 delete-route -ro rtb-ef36e58a --dest 0.0.0.0/0
+aws ec2 create-route -ro rtb-ef36e58a --dest 0.0.0.0/0 --gateway-id igw-5a1ae13f
+aws ec2 create-route -ro rtb-ef36e58a --dest 192.168.0.0/16 --gateway-id vgw-5a1ae13f
+```
+
+## Automatic Route Propagation from VGW
+
+```aws cli
+aws ec2 delete-route -ro rtb-ef36e58a --dest 192.168.0.0/16
+aws ec2 enable-vgw-route-propapation -ro rtb-ef36e58a --gateway-id vgw-5a1ae13f
+```
+
+## Isolate some of the subnet's connection inside the VPC
+
+* Create separate route table for the subnet
+
+## software firewall to internet (NAT)
+
+```aws cli
+# by-default it won't work, we need to change the eni of the NAT server. Disable the source and dest check
+aws ec2 modify-network-interface-attribute --net eni-f832afcc --no-source-dest-check
+aws ec2 create-route --ro rtb-ef36e58a --dest 0.0.0.0/0 --instance-id i-f832afcc
+aws ec2 create-route --ro rtb-ef36e31c --dest 0.0.0.0/0 --gateway-id igw-5a1ae13f
+```
+## VPC peering
+
+* VPC peering support across acount, across region
+* VPC peering is a service ; no Single point of failure
+* Use case :
+ * shared service running inside VCP and peering with other VPC.
+ * Separate backend DEV/TEST/PROD; with VPC peering, all env have same ip , the service pointing different VPC by configure the iprouting table to pick the correct VPC, and each DEV/TEST/PROD VPC will have exact same IP setting.
+* 2 to-be-peered VPCs can't have IP address overlap, but 1 VPC can peer with multiple VPCs which has ipaddress overlap.
+* Security Groups can't be refered across VPC
+* VPC peering can use similiar way as a NAT server. (routing internet connect via another VPC )
+  * so one VPC don't need to have internet access, it connect to internet through another VPC's igw
+
+# Remote connection Best Practice
+
+* For each customer gateway create 2 VPN tunnel to 2 availability zones that VPC has .
+* use 2 customer gateway on-promise for failover. Then customer gateway has 2 VPN tunnel link to different AZ.
+* Use 2 direct connect, each direct connect will link to 1 AZ, then add another IPSec VPN (customer gateway) and link 2 different AZ.
+
+
+# VPC Performance
+
+__packats per second__ : important capability for instances to get high VPC performance
+
+* EC2 has driver to better use physical network and bypass the virtualization layer
+
+
+# Reference Customer Use Case
+
+
+## live video
+
+* A backpack containing multi routers to provide multi connections to internet to makesure the live vidio being sent.
+* inside AWS, to transcoding and published
+
+## TradeAir
+
+Small banking solution on cloud.
+* Use direct connect with on-promise
+
+
+# VPC migration
+
+ClassicLink : EC2-Classic instances communicate with EC2-VPC instances
+Helps to migrate  EC2-Classic platform into VPC network.
+* move aws managed services first
+* Make ELB ready to route traffic to both classic and VPC networks
+* start new VPC EC2 instances and route the traffic in
+* turn off the old classic EC2 instances gracefully
+
+## Reference
+
+>
+https://youtu.be/i6Zf9lwXRcY
+
+> VPC deepdive 2015
+> https://youtu.be/B8vnhRJDujw
+
+#  Hosted Virtual Interface vs Hosted Connection --- when using direct connection
+
+* VIF is direct connection (1Gpbs) -- you can share with multiple account
+* Hosted Connection is direct connection but being splitted by AWS partner and garanteed speed (for example 50Mbps per connection)
+
+## Reference
+
+>https://youtu.be/r7zamTFGxcM
+
 # VPC enhancements
 
 ## Elastic Network Adapter
@@ -46,6 +176,7 @@ tags:
 * Security Groups : Instance Level
 * ACL (Access Controle Lists): Subnet level
 * Flow Logs (Capture as CloudWatch logs)
+
 
 
 # 046.mp4 -- VPC handon demo
@@ -101,11 +232,6 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html
 * 常用场景是一个instance坐在两个subnet上，一个网卡（例如eth0）连subnet A，一个连subnet B。
     * Subnet A 是public subnet，通过安全控制使得该instance可以提供http网络服务
     * Subnet B 是private subnet，通过安全控制使得该instance只能连VPN Gateway，通过该gateway允许指定内网ip地址提供ssh连接进行管理。
-
-ClassicLink : EC2-Classic instances communicate with EC2-VPC instances
-https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html
-what is a EC2-Classic platform?
-https://docs.rightscale.com/faq/clouds/aws/What_is_an_EC2-Classic_network.html
 
 BGP-capable VPN device (Border Gateway Protocol)
 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html
