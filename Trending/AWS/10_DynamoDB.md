@@ -7,7 +7,7 @@ tags:
 
 # DynamoDB Deepdive
 
-* RDB optimized for storage; nonsql optimized for compuite
+* RDB optimized for storage; nonsql optimized for compute
 * DynamoDB supports both Key-value and document data models
 
 ## Terminology
@@ -16,10 +16,10 @@ Keys:
   * __Partition Key__; __Hash Key__;
   * __Sort Key__;
   * __Range Key__ ;
-    * __Local secondary index (LSI)__
+     * __Local secondary index (LSI)__
 	* __Global secondary index (GSI)__ (max 5 GSI per table)
 	* If data size >10G use GSI
-  * __Primary Key__ = Partition key + Sort Key
+     * __Primary Key__ = Partition key + Sort Key
   * Attribute;
   * __composite attributes__ ; __composite key__ : a way of construct partition key
 
@@ -27,8 +27,7 @@ Keys:
 * A Partition has 10G limit, if total storage with same partition key exceeded the limit, then __sort key__ is used.
 
 * Table --> Items --> Attributes --> Partition Keys (Mandatory attribute); Sort Key (Optional)
-* HashKey + range key is globally unique;
-* DynamoDB each partition will have totally 3 copy (including itself); when write, you will get success response when 2 writes succeed.
+* DynamoDB each partition will have totally 3 copies (including itself); when write, you will get success response when 2 writes succeed.
 
 * __Hash Range Table__ : a table where Hashkey+RangeKey to identify an item.
 

@@ -5,6 +5,122 @@ tags:
 - VPC
 ---
 
+
+# VPC deepdive 2016
+
+> https://youtu.be/Qep11X1r1QA
+> very deep session about BGP, VPN, Direct connect. Loads of technical details 
+
+## Difference between IPSec VPN and DirectConnect
+
+## Hardware VPN
+
+* 2 tunnels/VPC; each tunnel will connect to one AZ
+* 0.05/hours/VPN (that includes 2 tunnels); ( EC2 medium is 0.1/hour)
+* support static VPN and dynamic VPN (BGP)
+
+
+### Static VPN vs Dynamic VPN
+
+* Static VPN
+  * IP address is Static
+  * each tunnel need 2 pairs of Security Association (inbound and outbound); that means 1 VPC connection needs 4 SA pairs
+* Dynamic VPN
+  * BGP IP address is dynamically generated
+  * Use ASN as registry to talk with each other (for AWS, 1 ASN/Region; for customer side, also need to configure ASN)
+  * In PROD, you can setup 2 tunnels per VPC from customer site to connect to each VPC owned by you.
+
+### Common maintain FAQ for VPN
+
+* How to change pre-shared key?
+> Create a new VPN connection and delete current.  --- (IP config might change)
+
+* How to change crypto?
+> change the config and the it will be updated during negotiation.
+
+* Migration VPN to another VPC
+> detach the VGW from VPC and re-attach to new VPC
+
+### VPN Billing
+
+* 0.05/hour/VPN
+* Data Transfer
+  * Flow in is free
+  * VPC to VPC is not free
+
+## Direct Connect
+
+* For direct connect, your VPC can be private or public
+* Data in is free, data out via Direct Connect is cheaper compared to internet
+* One direct connection can be shared between multiple AWS accounts
+* Direct Connect only use BGP
+* Dedicated vs Hosted Direct Connection
+    * Dedicated: Connect from AWS Partner DataCenter to AWS router via fiber (1G or 10G)
+    * Hosted: Connect to AWS via shared connection provided by AWS Partners (50-500MBps)
+       * Hosted only support single Virtual interface
+* Public VIF vs Private VIF
+    * Private VIF only connect you to VPC (not DNS and not S3)
+    * Public VIF : can connect you to anything
+    * Configure VIF specify: Public or Private; VLAN ; BGP Session
+
+### maintain FAQ for Direct Connection
+
+* How to move between accounts
+  * don't delete, raise a support request
+* How to move VIF
+  * Delete and create new (copy the old setting)
+* Need public IP for VIF?
+  * support case
+* Change bandwith
+  * Partner support case
+
+### Direct Connect Billing
+
+* More expesive per hour but cheaper for data transfer fee
+   * Data transfer fee is depending on who owns the VIF which support data transfer out
+      * For example, for public VIF, you access S3 owned by you, you pay; you access S3 owned by other people , they pay  
+      * For example, for private VIF, data transfer out via the VIF owned by you , you pay
+
+### IPV6 on Direct Connect
+
+* Adding IPV6 to existing DX
+  * Select current DX , add peering , select IPV6
+  * Then your DX page will show IPV4 and IPV6
+* Your DX can support IPV4 or IPV6 or both
+
+## BGP base knowledge
+
+* TCP protocol on port 179
+* ASN: Autonomous System Numbers : alway check when create
+  * If you use Public ASN to connect with aws via BGP, you must own that ASN ;
+  * From 29min ???
+* iBGP is used between peers inside same ASN, eBGP is used between peers belong to different ASN
+* AS_PATH : Measure of network distance
+* Local Preference: configure as preferred local connection
+
+## VPC routing preference
+
+* local VPC routing wins
+* non local address will first check longest prefix (for example route config for 10.0.0.0/32 wins 10.0.0.0/16, because it's more specific)
+* Static route config wins agaist dynamic
+* Dynamic routes, DX connection wins
+    * If both connection are DX, then, shorter AS_PATH wins
+    * Same AS_PATH, then compare traffic
+* Dynamic(BGP), non DX, then VPN
+    * Static VPN wins against BGP VPN
+    *  compare AS_PATH
+
+## AWS VPN CloudHub
+
+* AWS muti region connect to multiple cooperate DC via eBGP;
+* Advanced Scenario: use direct connect with one Cooperate DC, then use VPN CloudHub, and all datacenter can make use of the direct connect to speed up
+* With the multi to multi scenario ,the VPN hub is a pair of EC2 to act as soft VPN sits in transit VPC (use official cloudformation to automate)
+
+## VPN over VIF
+
+* Direct Connection by default is not encrypted, what if I want to use DX but want the traffic to be encrypted?
+ * Use VRF feature provided by router hardware to setup VPN tunnel based on DX
+
 # VPC Deep Dive
 
 Backgroud of VPC: 2009 aws lanched VPC and then simplified to create a default VPC to every account.
@@ -125,6 +241,8 @@ https://youtu.be/i6Zf9lwXRcY
 
 > VPC deepdive 2015
 > https://youtu.be/B8vnhRJDujw
+
+
 
 #  Hosted Virtual Interface vs Hosted Connection --- when using direct connection
 
