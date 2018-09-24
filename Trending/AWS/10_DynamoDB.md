@@ -56,11 +56,12 @@ Store the data how you will access it.
       * Archive cold data to S3
       * precreate daily,weekly monthly tables and provision accordingly to current table
    * Time series table (Dynamic ttl time stamps) -- data being updated
-      * have a GSIKey to label recent updated data
+      * have a GSIKey to label recent updated data (??? 36min:36s)
 	  * Put GSI key as partion key and update timestamp as sort key
 	  * using lambda to filter out expired data and rotate into data lake
 * Product Catelog - Black Friday
    *  Use cache, and logic of updating cache can be implemented lambda
+
 * Common Pattern - Online Gaming (filter)
    * Problem: filter against non sort key. The engine will read all qualified records
      * Solution 1: create composite key (in mongodb it's called combind index)
@@ -94,7 +95,7 @@ Store the data how you will access it.
 
 # Reference
 
-> Deepdive DynamoDB
+> Deepdive DynamoDB --- Very good
 https://youtu.be/bCW3lhsJKfw
 
 > Deepdive DynamoDB
@@ -114,25 +115,15 @@ https://aws.amazon.com/blogs/database/choosing-the-right-dynamodb-partition-key/
 * Atomic Counters
 
 Terminology,
-* Table (like collection in Mongo)
-* Table has items ; item has attributes
-* Table must have primary key
-* Primary Key can be partitioned / sorted
 * Per table you can have max 5 global secondary index and max 5 local secondary index
   * Global means accross partition
 * Query and Scan
   * Query is recommended , query has to use the Primary Key;
   * Scan will be used to scan the whole table (because no primary key no partition filter)
   * Both by default is eventually consistent. Can request a strong consistent query/scan
-* Atomic Counters and Atomic updates
+* Atomic Counters and Conditional Writes
   * https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html#WorkingWithItems.AtomicCounters
-* Provisioned throughput
-  * Assign by tables / indexes
-  * Buy by write/read capacity units
-    * Write Capacity needed for a table: Round(itemsize/chargingStandardSize) * (numberOfWritePerSec)
-    * Read Capacity needed for a table: Round(itemsize/chargingStandardSize) * (numberOfReadPerSec/IfNotConsisitentReadThen2)
-* Streams: underlying mechanism how it works
-* Triggers : linked to Lambda
+
 
 # 040.mp4 -- DynamoDB Handson
 
@@ -152,15 +143,6 @@ Supported Data types
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBMapper.DataTypes.html
 
 
-Read / write Capacity Unit definition
-https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
-
-(perItemSize/4k) * ItemConsistentReading/Sec = number of reading units
-(perItemSize/1k) * ItemWriting/Sec = number of writing units
-
 Table name rule
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.NamingRules
 charactor, number, underscore, dash, dot
-
-Best Practise of design table primary key (partition key and sort key)
-https://aws.amazon.com/blogs/database/choosing-the-right-dynamodb-partition-key/
