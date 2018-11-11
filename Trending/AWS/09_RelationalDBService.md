@@ -19,7 +19,7 @@ tags:
 * Backup - to S3 (can be encrypted for db or snapshot at rest)
 * Failover - Multi-AZ ; when master fails , standby is promoted , then CName is updated to poiting to standby, then new instance is created to replace the master
 * Read Replica (don't support ms sql and oracle); one DB can have multiple read replicas
-* Routing using Route53 or customed HAProxy , __not support AWS ELB__
+   * If you have multiple read replica, then routing from single url using Route53 or customed HAProxy , __not support AWS ELB__
 
 # Security
 
@@ -53,7 +53,7 @@ tags:
 * Launch multiple read replica into different regions
 
 * Aurora is different with traditional DB
-  * have concept similiar like shards (???)
+  * have concept similiar like shards
   * __Read Replica Endpoint__: single point to the back end read replica clusters
 
 # Scaling RDB
@@ -105,7 +105,7 @@ Snapshot is manually triggered compared to backup.
 MySQL Dump --> S3 (multi part upload; snowball )--> restore Aurora from S3
 
 __AWS Database Migration Service__:
-database heterogeneous migration 
+database heterogeneous migration
 
 # 037.mp4 -- AWS RDS Hands On
 

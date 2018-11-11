@@ -33,10 +33,10 @@ Keys:
 
 ## Scaling
 
-* Scaling on __throughput__ : WCU and RCU
+* Scaling on __throughput__ : WCU and RCU (CU is Capacity Unit)
   * Partition needed = Roundup((total RCU/3k)+(total WCU/1k))
 * Scaling on size (maxsizeperitem=400kb, maxsizeperpartition=10G)
-* Final Scaling = ceiling( ScalingByThrougput, ScalingBySize)
+* Final partition = ceiling( ScalingByThrougput, ScalingBySize)
 * heat map -- showing by time and partition dimention about which data being requested. If all data access is focused from a specific partition, then we got __Hot Keys__ which we should avoid by re-design the paritition key.
 * DynamoDB __Burst capacity__ is built in
 
