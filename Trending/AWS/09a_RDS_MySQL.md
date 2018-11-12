@@ -57,7 +57,7 @@ Around 1 min for fail over
 * 30 sec -- CN Name (DNS) update
 * standby sits in different AZ, read replica sits in different region
 
-# import scaling archi
+# important scaling archi
 
 (???)
 * for reading intensive application (for example 90% reads) --- create more more read replica

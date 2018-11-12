@@ -19,10 +19,10 @@ __CloudFrontPop__: Point Of Presence, Edge Location
 CloudFront deployed on Edge locations (number of Edge locations>Available zones> Regions)
 
 * Source can be S3 , HTTP Server on AWS or outside AWS
-* CloudFront only cach GET and HEAD requests, for POST,PUT,DELETE cloudfront will only proxy
-* Different combinations to cach for static / dynamic websites
+* CloudFront only cache GET and HEAD requests, for POST,PUT,DELETE cloudfront will only proxy
+* Different combinations to cache for static / dynamic websites
   * For static, we can select only cache documents , exclude HTML/css/code; or set TTL and cache all
-  * For dybamic, we can select only cache static content , exclude php/code ; or set TTL and cache all
+  * For dynamic, we can select only cache static content , exclude php/code ; or set TTL and cache all
 
 
 # How it works

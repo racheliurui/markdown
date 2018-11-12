@@ -66,7 +66,7 @@ Role的定义包含：
    * RoleARN: unique within whole AWS
        * arn:aws:iam::<uniqueaccountid>:role/<RoleName>
    * Delegation:
-       * Create a role in account that owns the resource; then attach policy to represent the role access; setup trust relationship
+       * Create a role in account that owns the resource; then attach policy to represent the role access; setup trust relationship (allow consume the role)
 
 ### Identity Federation
 
@@ -248,3 +248,46 @@ You can use aws CLI with SAML ( the session will be persisted by default for 60 
 
 > AWS AD deep dive
 > https://youtu.be/CY-xvo8Cc54
+
+
+
+
+# Progressive Journey Through AWS IAM Federations Options - 2015 (SEC07)
+
+> https://youtu.be/-XARG9W2bGc
+
+## SAML Primer -- Security Assertion Markup Language
+
+* Configuration Time:
+  * Identity Provider and Service Provider to exchange metadata in advance
+* Run time:
+  * Cryptographic Trusted Assertion (login flow)
+
+## Demo -- Automating onboarding
+
+* Use python script to create providers, roles and policies into AWS
+
+  * python script to create IAM provider
+  * python script to create role with inline policy
+  * python to generate ldif (ldap exchange file) file and load group definition back into ldap
+
+* Use python script to create group definitions into Directory
+
+## AWS Business Partner's Solution Demo
+
+# Nova
+
+* Solution quite like Ranger
+* User authenticate request with Nova is routed to AD
+* AD pass then authentication and reply user id to Nova.
+* Nova query user group information from AD, map to AWS group saved in its database
+* Nova reply customer ask for which role the user want to log in
+* Nova request sts from IAM and return to user (either login aws console or get temp access keys)
+
+# Nova 2
+
+* add another dimention by using tag -- to label team / resource
+
+# Nova 3
+
+* allow user to select which account, which application and which environment to work on

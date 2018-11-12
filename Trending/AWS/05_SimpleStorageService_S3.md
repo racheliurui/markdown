@@ -18,7 +18,7 @@ S3 -- writing concurrency
 ## S3 Event Notification
 
 * Configure when event is triggerred
-* Cifigure filter : File Prefix (Path and name) , Suffix
+* Configure filter : File Prefix (Path and name) , Suffix
 * Notification can integrate with Lambda, SQS , SNS
 
 ## LifeCycle Management

@@ -45,7 +45,7 @@ S3在VPC（virtual private cloud）之外。VPC需要创建Endpoint 去连S3 buc
 
 * RDS ：oracle ， sql server， mysql， postgres, Aurora, MariaDB (MySQL community version)
 * Aurora： 企业版MySQL/PostgreSQL
-* Dynamaldb： servless ， nosql
+* Dynamodb： servless ， nosql
 * redshift： datawarehouse （petabytes）， based on postgres
 * ElastiCache （两种引擎可选：Redis， memcache）
 * AWS database migration service: Oracle -> Aurora PostgreSQL
