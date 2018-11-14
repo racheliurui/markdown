@@ -5,6 +5,16 @@ tags:
 - Backup and Disaster Recovery
 ---
 
+# AWS Disaster Recovery
+
+http://www.ecloudgate.com/Doc/DisasterRecovery_Overview
+
+Backup and Restore vs Pilot Light vs Warm Standby
+cheap ---> Inexpensive
+Slow ----> quick
+RPO high --> Low which mean time to recover from high to low
+RTO high --> Low  which mean data loss time period from high to low
+
 # 079.mp4 080.mp4 - Backup and disaster recovery
 
 ## RPO and PTO
