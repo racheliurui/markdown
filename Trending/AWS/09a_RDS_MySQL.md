@@ -6,6 +6,44 @@ tags:
 - MySQL
 ---
 
+# Building Your Application with an Amazon Aurora Database (DEM113)
+
+https://youtu.be/-ychuATbqPY
+
+## Key New Feature
+
+* Serverless: Auto provision the computing power you need; scale up and down automatically.
+* Aurora parallel query  
+* Enable Backtrack (select the backup window)
+* Performance Insight
+
+
+#  Running a High-Performance Kubernetes Cluster with Amazon EKS (CON318-R1)
+
+https://youtu.be/YQWt6wdAZMU
+
+## Optimize pod placement
+
+1) limit the resource
+2) Density vs. Size of pods
+3) Anti-affinity : keep the CPU heavy pods onto different hosts
+
+## Use diagram to balance the design
+
+1. Anti-affinity
+2. Secretes
+3. Number of Nodes
+4. Active Namespaces
+5. Pod Churn
+6. Pod Density
+7. Networking
+
+## Use K8S with Database
+
+When choosing the persistence layer you have 3 options, inside pod, outside but in same box, outside box.
+
+37:12
+
 # Data migration
 
 * take backup from replica or slave

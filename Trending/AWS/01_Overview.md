@@ -50,7 +50,7 @@ S3在VPC（virtual private cloud）之外。VPC需要创建Endpoint 去连S3 buc
 * ElastiCache （两种引擎可选：Redis， memcache）
 * AWS database migration service: Oracle -> Aurora PostgreSQL
 
-Database sits in VPC。
+Database sits in VPC
 
 ## network and content delivery
 

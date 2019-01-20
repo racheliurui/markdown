@@ -291,3 +291,9 @@ You can use aws CLI with SAML ( the session will be persisted by default for 60 
 # Nova 3
 
 * allow user to select which account, which application and which environment to work on
+
+# Basics
+
+Identity based Policy vs Resource based policy:
+Identity based：for a given user, define what resource he/she can access
+Resource based：for a given resource, see who have access to it

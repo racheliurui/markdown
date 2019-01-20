@@ -5,6 +5,69 @@ tags:
 - CloudTrail
 ---
 
+# Reference
+
+https://youtu.be/vtMCjyE5nms
+
+## AWS CloudTrail OFF IR (Incident Response) Runbook
+
+When someone want to turn off the CloudTrail, it will automatically being turned on and automated report and reminder being generated.
+
+Automation Steps,
+
+1. Turn CloudTrail backon
+   * using python/lambda to handle the turn off event and turn it back on.
+2. Gather data related to "TURN OFF" incident
+3. Extract principal, date, time, source IP from event data
+4. Map principal who assumed the role
+5. Lookup human contact info
+6. Contact human provide guidance
+7. Generate event summary for report
+
+## questionair before implementation
+
+1. What's my expressed security objective in words
+2. Is it configuration or behavior related ?
+3. What data, where could help inform me ?
+4. Do I have requisite ownership or visibility ?
+5. What are my performance requirements ?
+6. What mechanisms support the above ?
+7. What is my expressed security objective in code?
+8. Am I done?
+9. Does a human need to look at this? When?
+
+## Demo - S3:PutBucketPolicy IR Runbook
+
+When someone changed the S3 policy in a bad way, check the policy and restore it if needed.This runbook is making use of Stepfunction to implement it.
+
+## Demo - EC2 Login IR Runbook (User Login)
+
+When someone logged into the instance (as long as they have the key), check the login behaviour combining with other relavant data, then decide wether to isolate the instance or not.
+This runbook is making use of cloudwatch event (cloudwatch will trigger a selfdefined json event when ec2 login action happens).
+
+Identify
+
+1. Get the user
+2. Gather relevant data
+3. Terminate session
+4. Isolate the instance
+5. Report the incident
+
+Research
+
+1. Pull logs
+2. Correlate other data
+3. Report findings
+
+Forensics
+
+1. Memeory Dump
+2. Create AMI and copy to forensics account
+3. Launch instance & Investigate & Report findings
+
+
+## Demo
+
 
 # CloudFront Deepdive -- SEC318
 

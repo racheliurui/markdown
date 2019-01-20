@@ -183,3 +183,15 @@ CloudWatch: S3 Metrics
 # Reference
 
 > 024.mp4 - S3 overview
+
+
+# Other important thing about S3
+
+## how S3 authenticate the http request
+
+* User use secret key to encrypt a header signature
+* AWS S3 received the request, then retrive the user secret
+* AWS encrypt to get the header signature
+* AWS compares the signature with user submitted one, if same then pass the authentication.
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html
