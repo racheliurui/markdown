@@ -13,6 +13,8 @@ https://sites.google.com/site/ev3devpython/setting-up-vs-code
 Connecting with mac
 https://www.ev3dev.org/docs/tutorials/connecting-to-ev3dev-with-ssh/
 
-
 issues
 https://github.com/ev3dev/ev3dev/issues/1220
+
+
+Wireless

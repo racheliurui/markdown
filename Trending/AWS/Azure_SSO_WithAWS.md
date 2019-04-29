@@ -49,3 +49,7 @@ https://aws.amazon.com/SAML/Attributes/RoleSessionName
 user.userprincipalname
 
 ```
+
+
+After successful config, login via
+https://account.activedirectory.windowsazure.com/r#/applications
