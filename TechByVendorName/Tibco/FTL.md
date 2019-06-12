@@ -18,7 +18,7 @@ The package was installed into /opt/tibco/ftl/5.4
 sudo /opt/tibco/ftl/current-version/bin/tibrealmserver
 ```
 
-Visit the console at http://localhost:8080
+Visit the console at http://ftlrealm.tibco.gac.test.etpartners.net:8080
 
 
 # start developing java client
