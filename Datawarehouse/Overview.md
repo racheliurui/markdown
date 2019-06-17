@@ -1,4 +1,4 @@
-title: Different Worlds of Data Capture and Data Analysis
+title: Data Wharehousing, Business Intelligence, and Dimensional Modeling Primer
 date: 2019-06-02 20:28:10
 tags:
 - Datawarehouse
@@ -27,7 +27,7 @@ tags:
 * DW是一个decision support system
 * DW必须得到业务人员的支持和使用才能成功；跟业务系统不一样，DW是optional，不好用就会被废弃
 
-# Publishing Metaphor for DW/BI Managers
+## Publishing Metaphor for DW/BI Managers
 
 把DW必须成发行杂志。DW需要
 
@@ -55,7 +55,7 @@ Dimensional model常常使用关系型数据库，但是和3NF（normal form）�
 * 3NF的缺点是复杂以及查询性能不好
 * dimensional model易于用户理解；查询性能好，易于根据业务需求变化而变化
 
-# Star Schemas Versus OLAP Cubes
+## Star Schemas Versus OLAP Cubes
 
 * Dimensional model用关系型数据库实现就是Star Schema
 * Dimensional model用多维数据库实现就是OLAP data cube
@@ -71,7 +71,7 @@ Dimensional model常常使用关系型数据库，但是和3NF（normal form）�
 * OLAP支持snapshot fact但是不支持accumulate
 * OLAP对hirarchy等类型的数据查询支持比较好
 
-# Fact Tables for Measurements
+## Fact Tables for Measurements
 
 * Each row in a fact table corresponds to a measurement event. 不能拆。
 
@@ -106,10 +106,142 @@ versus a dimension attribute.
 
 ## Facts and Dimensions Joined in a Star Schema
 
-Benefit of Start Schema
+Benefit of Star Schema
 
 * Easy to understand
 * Simplicity brings in performance benefits
 * Dimensional model are gracefuly extensible to accommodate change.
   * Fact won't change, but dimension values can.
   * By adding new rows to dimension table or alter current fact table to add new dimension FK will fulfilll the change requirement
+
+
+  A sample of SQL for star schema
+
+  ```sql
+  SELECT
+  store.district_name,
+  product.brand,
+  sum(sales_facts.sales_dollars) AS "Sales Dollars"
+  FROM
+  store,
+  product,
+  date,
+  sales_facts
+  WHERE
+  date.month_name="January" AND
+  date.year=2013 AND
+  store.store_key = sales_facts.store_key AND
+  product.product_key = sales_facts.product_key AND
+  date.date_key = sales_facts.date_key
+  GROUP BY
+  store.district_name,
+  product.brand
+  ```
+
+  Where clauses including filter then join between fact and dimention then group by  to estabsh the aggregation.
+
+
+P54.
+
+# Kimball's DW/BI Architecture
+
+4 components: Operational Source Systems, ETL system, Data PRZ area, BI applications
+
+## Operational Source Systems
+
+* Focusing on : Performance and availability
+* Maintain little historical data
+
+## Extract, Transformation, and Load System
+
+* Extraction: move the data into DW scope
+* Transformation: enrich, de-dup , etc
+* Load the data into dimensional model
+   * including Surrogate key assignment
+
+> Industry argument, should ETL landing area be normalized structure? No need.
+
+
+## Presentation Area to Support Business Intelligence
+
+* Baseline: data must be dimensional schema or OLAP cubes ; this has been accepted by industry
+* presentation area must contain atomic data (vs summary data );
+    * it's __unacceptable__ to put atomic data in to 3NF model and only put summary data into star schema (WRONG)
+* Data area should be around process measurement; and across organizational dep boundaries.
+* When the bus architecture is used as a framework, you can develop the enterprise data warehouse in an agile, decentralized, realistically scoped, iterative manner.
+
+>Data in the queryable presentation area of the DW/BI system must be dimensional, atomic (complemented by performance-enhancing aggregates), business process-centric, and adhere to the enterprise data warehouse bus architecture.The data must not be structured according to individual departments’ interpretation of the data.
+
+## Business Intelligence Applications
+
+* Tableau (??)
+
+P59
+
+## Restaurant Metaphor for the Kimball Architecture
+
+*  ETL : Backend kitchen
+
+ETL should focusing on ,
+__Quality__
+__Consistency__
+__Integrity__
+
+ETL should avoid being involved by DW/BI patrons.
+
+
+*  Data Presentation and BI: Front Dining Room
+
+Focusing on : properly organized and utilized to deliver as needed to the presentation area’s food, decor, service, and cost.
+
+# Alternative DW/BI Architectures
+
+## Independent Data Mart Architecture
+
+* Data after multiple ETL logic landed in multiple models designed for different front room.
+* No centralized data governance
+* Short term low cost; normally already applied star schema for each model
+
+## Hub-and-Spoke Corporate Information Factory Inmon Architecture
+
+* 3NF is re-enforced
+
+## Hybrid Hub-and-Spoke and Kimball Architecture
+
+* 2 Layers of ETL
+* Source -> 3NF -> Kimball
+
+
+P66
+
+# Dimensional Modeling Myths
+
+## Myth 1: Dimensional only for summary Data
+
+Summary data should complement the granular details solely to provide improved performance for common queries, __but not replace the details.__
+The amount of history in dimensional models must only be driven by business's requirement nor the performance purpose.
+
+
+## Myth 2: Dimensional for Departmental
+
+## Myth 3: Dimensional are not scalable
+
+It's common for fact table to have billions of rows; some fact table containing 2 trillion rows have been seen.
+Key difference between 3NF and Dimensional is Dimensional are easier to understand.
+
+## Myth 4: Dimensional only for predictable usage
+
+The model is center on measurement process not pre-defined reports or analyses.
+"God is in the details"
+
+## Myth 5: Dimensional Can't be integrated
+
+Data integration depends on standardized labels, values, and definitions.
+
+# More Reasons to Think Dimensionally
+
+Robust dimensions translate into robust DW/BI systems.
+
+# Agile Considerations
+
+# Summary
