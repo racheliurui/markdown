@@ -45,20 +45,20 @@ Dimensional modeling实现了两个难点：
 * 查询快速
 
 “We sell products in various markets and measure our performance over time”
-这句话里面蕴含了3个dimention， “product”，”market“和”time”
+这句话里面蕴含了3个dimension， “product”，”market“和”time”
 
-Dimentional model常常使用关系型数据库，但是和3NF（normal form）模型不同。
+Dimensional model常常使用关系型数据库，但是和3NF（normal form）模型不同。
 
-* 3NF的目的是去除redundency， 属于ER （entity relationship）模型； Dimentional模型也属于ER模型
+* 3NF的目的是去除redundency， 属于ER （entity relationship）模型； Dimensional模型也属于ER模型
 * 3NF和Dimential model的关键不同是normalization的程度
 * 3NF的normalization程度更高，我们一般叫normalized model
 * 3NF的缺点是复杂以及查询性能不好
-* dimentional model易于用户理解；查询性能好，易于根据业务需求变化而变化
+* dimensional model易于用户理解；查询性能好，易于根据业务需求变化而变化
 
 # Star Schemas Versus OLAP Cubes
 
-* Dimentional model用关系型数据库实现就是Star Schema
-* Dimentional model用多维数据库实现就是OLAP data cube
+* Dimensional model用关系型数据库实现就是Star Schema
+* Dimensional model用多维数据库实现就是OLAP data cube
 
 ## OLAP Deployment Considerations
 
@@ -67,7 +67,7 @@ Dimentional model常常使用关系型数据库，但是和3NF（normal form）�
 * OLAP的表设计常常绑定技术提供商，移植性比较差。
 * OLAP的数据安全性比较好；可以做到限制用户只能看到summary
 * OLAP的分析能力更强大
-* OLAP对变化的dimention支持更好
+* OLAP对变化的dimension支持更好
 * OLAP支持snapshot fact但是不支持accumulate
 * OLAP对hirarchy等类型的数据查询支持比较好
 
@@ -84,24 +84,32 @@ versus a dimension attribute.
     * Additivity fact : 销售额
     * Semi-Additivity fact： 例如account balance
     * Non-Additivity fact：例如产品单价
-* textual Fact： 通常没有， 如果有也尽量放到Dimentional里面去
+* textual Fact： 通常没有， 如果有也尽量放到Dimensional里面去
 * Empty item. Fact 里面一定要放发生的事件，没有发生不要尝试放0.
 * Fact表通常非常sparse； Fact表通常占据90%的存储； Fact表通常row非常大，column比较少；Fact表通常可以通过size预估行数
 * Fact表分三种：transaction, periodic snapshot, and accumulating snapshot.
-* Fact表至少有两个外键， 用来引用dimention表的主键
+* Fact表至少有两个外键， 用来引用dimension表的主键
 * __referential integrity__ 保证Fact表的条目引用的每个外键都正确
 * __composite key__ Fact表的主键通常由所有的外键组合而成.
 
 ## Dimension Tables for Descriptive Context
 
-* Dimention table 用来定义measurable业务事件的textual context
-* Dimention 表描述who, what,when,where, how, why
-* Dimention表通常列非常多，通常50-100个很正常
-* Dimention表通常row少，column多
-* Dimention表只有一个主键
-* Dimention的attribute是主要的查询，分组以及报告label的来源
-* Dimention的attribute名字必须有业务含义
-* 例如如果一个code有前两个字段代表一个含义，后面两个字段代表一个含义，设计的时候最好单独出来一个dimention而不是让客户查询的时候manipulate字符串
-* 实际设计的时候，如何确定一个numeric value是fact还是dimentional -- 确定它们是不是需要参与计算； 看数字是连续还是离散的
+* Dimension table 用来定义measurable业务事件的textual context
+* Dimension 表描述who, what,when,where, how, why
+* Dimension表通常列非常多，通常50-100个很正常
+* Dimension表通常row少，column多
+* Dimension表只有一个主键
+* Dimension的attribute是主要的查询，分组以及报告label的来源
+* Dimension的attribute名字必须有业务含义
+* 例如如果一个code有前两个字段代表一个含义，后面两个字段代表一个含义，设计的时候最好单独出来一个dimension而不是让客户查询的时候manipulate字符串
+* 实际设计的时候，如何确定一个numeric value是fact还是dimensional -- 确定它们是不是需要参与计算； 看数字是连续还是离散的
 
-P52
+## Facts and Dimensions Joined in a Star Schema
+
+Benefit of Start Schema
+
+* Easy to understand
+* Simplicity brings in performance benefits
+* Dimensional model are gracefuly extensible to accommodate change.
+  * Fact won't change, but dimension values can.
+  * By adding new rows to dimension table or alter current fact table to add new dimension FK will fulfilll the change requirement
