@@ -13,9 +13,14 @@ https://youtu.be/-ychuATbqPY
 ## Key New Feature
 
 * Serverless: Auto provision the computing power you need; scale up and down automatically.
-* Aurora parallel query  
+* Aurora parallel query
+    *  An option when provision your DB, suitable for DB used for both transaction and analysis
+    *  https://aws.amazon.com/blogs/aws/new-parallel-query-for-amazon-aurora/
+    *  No extra cost but will be more expensive on IO
 * Enable Backtrack (select the backup window)
+     * Be able to backtrack , extra cost 10USD/month
 * Performance Insight
+      * by SQL by user(session)
 
 
 #  Running a High-Performance Kubernetes Cluster with Amazon EKS (CON318-R1)
@@ -127,3 +132,9 @@ T2 is designed to burst CPU
 # Reference
 
 https://youtu.be/ZQnzjhnDloM
+
+
+# Difference between MySQL and MariaDB
+
+>
+https://blog.panoply.io/a-comparative-vmariadb-vs-mysql
