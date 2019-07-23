@@ -9,7 +9,7 @@ tags:
 # Use the right Tool for the right job
 
 Aurora benefit :
-* 5x throughput vs MySQL and 3x to postgres
+* 5x throughput vs MySQL and 3x to Postgres
 * Max 15 read replica
 * six copies of data across 3 AZ and continuous backup to S3
 
@@ -54,8 +54,18 @@ Industry: Healthcare, Government, Manufactures, HR&Payroll
 
 * I want the data to be immutable, can be tracked back, can be Cryptographically Verifiable
 * Blockchain is hard to maintain
+* Amazon QUantum Ledger Database: Immutable, Cryptographically verifiable, High scalable, Easy to use
+
+## Time Series Data -- AWS Timestream
+
+What kind of data is tiem series data,
+* weather ; IoT ; DevOps data
+* Time-series data will only have x axis as time , y can be changed in-flight and be flexible
+* Change to data from hot->warm->cold storage
+* millions of inserts (10M/sercond); serverless ; Trillions of daily events
+
 
 # Reference
 
-> Databases on AWS: The Right Tool for the Right Job
+> Databases on AWS: The Right Tool for the Right Job ( good PRZ)
 > https://youtu.be/-pb-DkD6cWg
