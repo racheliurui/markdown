@@ -27,7 +27,7 @@ Aurora benefit :
 * In-memory
 * Graph (Nepture)
 * Time-Series
-* Ledge
+* Ledger
 
 ## RDB Key-value Graph
 
