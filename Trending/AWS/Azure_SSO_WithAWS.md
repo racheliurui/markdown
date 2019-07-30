@@ -6,6 +6,12 @@ tags:
 - SSO
 ---
 
+# Update -- Single Azure to SSO to multiple AWS
+
+* Identifier must be unique, it can be string
+
+
+
 # Config Azure AD SSO to AWS Console via SMAL
 
 ## Azure Official Doc

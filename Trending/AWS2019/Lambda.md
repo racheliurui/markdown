@@ -3,6 +3,7 @@ date: 2019-07-25 11:37:23
 tags:
 - AWS
 - Lambda
+- Serverless
 ---
 
 # A Serverless Journey: AWS Lambda Under the Hood
@@ -35,14 +36,15 @@ tags:
 * EC2 as worker level
 * EC2 Bare Metal as worker level (no hardware share with other account)
   * Firecraker mode
+* Virtual Devices have very limited access to improve security
 
 ## Managing Utilization
 
 * Keep the server busy
 * Utilization is handled by AWS
    * Lambda have different algorithm to spread the load (concentrate the load)
-   * Lambda Pack different workload into one server to avoid similar workload spike all together.
-   * TTTTTTTTTTTTTTTTTTO
+   * Lambda Pack different/uncorrelated workload into one server to avoid similar workload spike all together.
+
 
 ## Lambda benefit
 
@@ -53,6 +55,11 @@ tags:
 * Security Isolation
 * Managing Utilization
 
+
+## new features
+
+* Change introduced from 2019
+   * Lambda connect out via a shared remote NAT to ENI to outside
 
 # Reference
 
