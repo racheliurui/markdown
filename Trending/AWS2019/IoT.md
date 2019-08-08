@@ -6,6 +6,11 @@ tags:
 - WPA3
 ---
 
+
+# Reference
+
+> https://youtu.be/LbeWdLaXYDo
+
 # Home automation ; Home security ; Home networking
 
 FreeRTOS / Greegrass --> IoT Core, management, Analytics / Database, ML --> IoT applications
@@ -37,9 +42,45 @@ FreeRTOS / Greegrass --> IoT Core, management, Analytics / Database, ML --> IoT 
 ## Home networking
 
 * Greengrass as a hub
-* Use IoT , using Device Defender , to detect unusual publishing 
-
+* Use IoT , using Device Defender , to detect unusual publishing
 
 # Reference
 
-> https://youtu.be/LbeWdLaXYDo
+> https://youtu.be/HEQkVHxu46A
+
+## Overview
+
+### Edge / Endpoint : Amazon FreeRTOS
+
+* OTA: over the air
+
+### Device Gateway: GreenGrass Core
+
+* Can be on-promise or in cloud
+* Protocol : MQTT, WebSockets, HTTP
+* TLS 1.2 Only
+* Message Broker
+
+### Device Management: IoT Device Management
+
+* Batch Fleet Provision
+* Search device
+
+### IoT Device Defender
+
+* Audit Device Config /monitor / Identify Anomalies / Alerts/ Patch
+* For example, security best practice check (certificate sharing )
+
+### IoT Analytics
+
+* Pipelines --> Analysis / ML
+
+### Other features
+
+* 1-Click , provisioned device . like the aws purchase button.
+
+## Demo -- Modjoul
+
+* 8 sensors , 50 MB data per person per day
+* 2 weeks data storage locally
+* Use IoT Analytics replace EMR
