@@ -84,3 +84,5 @@ FreeRTOS / Greegrass --> IoT Core, management, Analytics / Database, ML --> IoT 
 * 8 sensors , 50 MB data per person per day
 * 2 weeks data storage locally
 * Use IoT Analytics replace EMR
+
+* COmment, I DON'T LIKE THIS SOLUTION... haha
