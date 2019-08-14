@@ -31,5 +31,34 @@ tags:
   * Integrate with AWS WAF
   * Server Name Indication (SNI) : load balancing multiple applications that have muti certs
   * Authentication at ALB layer (OIDC, Cognito, SAML)
+  * Muti-AZ (by default) and no extra bandwidth charge ;
+  * Absorbs impact of DNS caching  (?)
+  * Health check ; recommend to use http code to check; work with auto scaling
 
-## Netflix Demo (27:40)
+
+## NLB
+
+* Million Level request / second
+* Static IP for each AZ
+    * Firewall example: 2 layers of NLB ; fewer static ip simplified the firewall config
+    * Route 53 will route to multiple static ip addresses in different AZ.
+* Support Proxy Protocol V2
+* Cloudwatch metrics for NLB : it has flow log
+
+
+## Netflix Demo -- Identity Platform
+
+*  Workforce Identity-as-a-Service
+*  Federate All The Things
+*  Developer Self-Service
+     *  SSO; SAML , OAuth2
+
+### Challenging with Identity Solution
+
+* Always catch up new language and frameworks
+* Open source varying quality
+* Developer friction around configuration
+
+![ALB_OpenIDSupport.PNG](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/ALB_OpenIDSupport.PNG?raw=true)
+
+* Spinnaker
