@@ -83,7 +83,7 @@ https://youtu.be/uE4x5kWVox4
 * use subnet to isolate DEV/PROD env
 * Set up cross-account VPC peering. (AWS CLI)
 
-![aws workspace network topo](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/Extra_AWS_Workspace_Diagram.png?raw=true)
+![aws workspace network topo](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/Extra_AWS_Workspace_Diagram.png?raw=true)
 
 
 

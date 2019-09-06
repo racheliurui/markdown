@@ -12,7 +12,7 @@ tags:
 
 
 
-![Encryption_KMS.PNG](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/Encryption_KMS.PNG?raw=true)
+![Encryption_KMS.PNG](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2019/images/Encryption_KMS.PNG?raw=true)
 
 
-![Encryption_KMS_1.PNG](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/Encryption_KMS_1.PNG?raw=true)
+![Encryption_KMS_1.PNG](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2019/images/Encryption_KMS_1.PNG?raw=true)

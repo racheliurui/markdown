@@ -10,7 +10,7 @@ tags:
 
 ## Lambda Load Balancing
 
-![lambda_components](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/lambda_components.png?raw=true)
+![lambda_components](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2019/images/lambda_components.png?raw=true)
 
 * __Front End Invoke__: authentication the caller, load configs & env ; confirm concurrency with __Counting Service__
 * __Counting Service__: Region wide view of concurrency to help set limits (quorum protocol, 2/3 agreement protocol ); <1.5 milliseconds response time
@@ -30,7 +30,7 @@ tags:
 
 ## Security Isolation
 
-![lambda_layers](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/lambda_layers.png?raw=true)
+![lambda_layers](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2019/images/lambda_layers.png?raw=true)
 
 
 * EC2 as worker level

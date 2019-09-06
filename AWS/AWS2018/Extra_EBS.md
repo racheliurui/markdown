@@ -20,7 +20,7 @@ tags:
 * Capacity: Volumn size
 * Block size: size of each i/o (kb)
 
-![GP2 Bursting Diagram][https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/extra_EBS_gp2.png?raw=true]
+![GP2 Bursting Diagram][https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/extra_EBS_gp2.png?raw=true]
 
 * Scenario: boost time speed up for windows when using gp2 because of Bursting
   * which is important autosclaing

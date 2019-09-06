@@ -40,7 +40,7 @@ Specify Max Age: for example max-age=300 means 5 min
 
 ## Try to use ECS-Enabled Resolver
 
-![CloudFront Common Issue](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/08_CloudFront_Issue.png?raw=true)
+![CloudFront Common Issue](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/08_CloudFront_Issue.png?raw=true)
 
 Issue , when View send request to ISP, ISP will forward the request to AWS and lost the original viewer's location information, and aws Route53 will only return the Edge Server which has smallest latency with the ISP instead of the viewer.
 

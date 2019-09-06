@@ -59,6 +59,6 @@ tags:
 * Open source varying quality
 * Developer friction around configuration
 
-![ALB_OpenIDSupport.PNG](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/ALB_OpenIDSupport.PNG?raw=true)
+![ALB_OpenIDSupport.PNG](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2019/images/ALB_OpenIDSupport.PNG?raw=true)
 
 * Spinnaker

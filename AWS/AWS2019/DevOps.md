@@ -29,7 +29,7 @@ Enterprise DevOps: Patterns of Efficiency
    *  DevOps legacy apps
    *  Culture of inclusion
 
-![DevOps_EnterpriseDevOps](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/DevOps_EnterpriseDevOps.PNG?raw=true)
+![DevOps_EnterpriseDevOps](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2019/images/DevOps_EnterpriseDevOps.PNG?raw=true)
 
 ## Enterprise DevOps Case study: NAB
 
@@ -42,4 +42,4 @@ Enterprise DevOps: Patterns of Efficiency
 * Security is not roadblock
 * Challenges of scale with Security -- Automation and tools and SME
 * Preventative ; Detective; Remediation. Try to shift Left (earlier)
-   * AWS Service Catalog 
+   * AWS Service Catalog

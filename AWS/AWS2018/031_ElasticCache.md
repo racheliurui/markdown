@@ -86,13 +86,13 @@ Redis Multi-AZ with Auto Failover
 
 * Session Replication
 * IoT Device Data: make use of the 4.x million write / second capability
-![IoT with Elastic Cache](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/031_ElasticCache_IoT.png?raw=true)
+![IoT with Elastic Cache](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/031_ElasticCache_IoT.png?raw=true)
 
-![IoT with Elastic Cache - another use case ](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/031_ElasticCache_IoT2.png?raw=true)
+![IoT with Elastic Cache - another use case ](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/031_ElasticCache_IoT2.png?raw=true)
 
-![IoT with Elastic Cache -  use case 3 ](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/031_ElasticCache_IoT3.png?raw=true)
+![IoT with Elastic Cache -  use case 3 ](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/031_ElasticCache_IoT3.png?raw=true)
 
-![IoT with Elastic Cache -  use case 4 ](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/031_ElasticCache_IoT4.png?raw=true)
+![IoT with Elastic Cache -  use case 4 ](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/031_ElasticCache_IoT4.png?raw=true)
 
 * GEO advertising (Redis support GeoSpacial )
 

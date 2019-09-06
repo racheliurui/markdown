@@ -42,9 +42,9 @@ S3 --> S3 IA --> Glacier
 * Once the replication is turned on , you can head-object to S3 object and check the ReplicationStatus metadata
 * Very useful feature when you want to accelerate upload to a remote region, upload to local region then replicate to remote
 
-![cross Region Replication cli](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/05_S3_CrossRegionReplication.png?raw=true)
+![cross Region Replication cli](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/05_S3_CrossRegionReplication.png?raw=true)
 
-![cross Region Replication policy](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/05_S3_CrossRegionRepli_Policy.png?raw=true)
+![cross Region Replication policy](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/05_S3_CrossRegionRepli_Policy.png?raw=true)
 
 
 

@@ -8,7 +8,7 @@ tags:
 
 # Redshift Archi overview
 
-![Redshift Cluster Archi ](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/023_RedShiftClusterArchi.png?raw=true)
+![Redshift Cluster Archi ](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/023_RedShiftClusterArchi.png?raw=true)
 
 * Bottom Layer: Ingestion Backup & Restore layer
 * Leader Node & Compute Node

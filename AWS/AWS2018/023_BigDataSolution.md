@@ -78,7 +78,7 @@ https://aws.amazon.com/emr/pricing/
 * Store: S3; DynamoDB; Glacier
 * Process & Analysis: EMR; Redshift; EC2
 
-![sample big data solution on AWS](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/023_BigDataSolutionOnAWS.png?raw=true)
+![sample big data solution on AWS](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/023_BigDataSolutionOnAWS.png?raw=true)
 
 ## Work through a case
 

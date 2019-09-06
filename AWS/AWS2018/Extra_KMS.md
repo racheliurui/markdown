@@ -43,7 +43,7 @@ Okta is a unit of measure for cloud cover. From 0 to 8 describe how much visabil
   * Encrypt Key only in Memory
   * Service has access to plain text data
 
-![Okta Encrypto Mode](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/Extra_KMS_Okta_mode.png?raw=true)
+![Okta Encrypto Mode](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/Extra_KMS_Okta_mode.png?raw=true)
 
 
 # References

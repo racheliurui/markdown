@@ -159,7 +159,7 @@ https://My_AWS_Account_ID.signin.aws.amazon.com/console/
 ## Integrate with AD - Best Practise
 
 
-![image of integrate with AD](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/03_IntegrateWithMicrosoftAD.png?raw=true)
+![image of integrate with AD](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/03_IntegrateWithMicrosoftAD.png?raw=true)
 
 > https://youtu.be/Iu-CpNFMELs
 
@@ -213,7 +213,7 @@ Choose your SAML provider : for example ADFS, Active Directly
 
 ### Federation High Level Steps
 
-![SAML process](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/03_IAM_SAML.png?raw=true)
+![SAML process](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/03_IAM_SAML.png?raw=true)
 
 * Prepare SAML provider in your network
 * Config SAML provider in AWS IAM

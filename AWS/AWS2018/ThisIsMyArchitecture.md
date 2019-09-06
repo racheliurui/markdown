@@ -5,6 +5,6 @@ tags:
 - AWS
 ---
 
-![VMWare SDDC](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/MyArchi_VMWareSDDC.png?raw=true)
+![VMWare SDDC](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/MyArchi_VMWareSDDC.png?raw=true)
 
 VMware Software Defined Data Center (VMware SDDC)

@@ -37,18 +37,18 @@ tags:
 
 ### Demo
 
-![vpc_flat](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/VPC_tgw_flat.PNG?raw=true)
+![vpc_flat](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2019/images/VPC_tgw_flat.PNG?raw=true)
 
 * Flat : Every VPC should talk to each other.
 
-![vpc_isolated](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/VPC_tgw_isolated.PNG?raw=true)
+![vpc_isolated](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2019/images/VPC_tgw_isolated.PNG?raw=true)
 
 * VPN: all traffic need go through VPN
 
 ### Reference Network Architecture
 
 
-![vpc_arch](https://github.com/racheliurui/markdown/blob/master/Trending/AWS2019/images/VPC_tgw_reference_arch.PNG?raw=true)
+![vpc_arch](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2019/images/VPC_tgw_reference_arch.PNG?raw=true)
 
 ### New Feature: VPC Sharing and Resource Access Manager
 

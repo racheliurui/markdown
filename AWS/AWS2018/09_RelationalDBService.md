@@ -37,7 +37,7 @@ tags:
   * Unencrpyted snapshot can be changed to encrypted snapshot
   * Encrypted db across region (aws is working on that)
 
-![config to enable encryption](https://github.com/racheliurui/markdown/blob/master/Trending/AWS/images/09_RDS_EncryptDataAtRest.png?raw=true)
+![config to enable encryption](https://github.com/racheliurui/markdown/blob/master/AWS/AWS2018/images/09_RDS_EncryptDataAtRest.png?raw=true)
 
 
 # Metrics and monitoring
