@@ -4,6 +4,10 @@ tags:
 - AWS
 ---
 
+# Reference
+
+> https://youtu.be/femopq3JWJg
+
 # Redesign of the DB architecture
 
 ## History of Aurora
@@ -26,16 +30,12 @@ tags:
 ## Basic knowledge with Aurora sharding
 
 * 3 quorums across 3 AZ is not enough, 6 quorums across 3 AZ
-* When a db using sharding, and has v quorums,
+  * V=6 (every data have 6 copies all together) means there would be 6 node for the same data, when writing, it needs at least more than 3 nodes being alive.
+* When a db using sharding, and has v quorums (servers), we can calculate how many write nodes and read nodes we need by applying the rules.
+  * if V=6 (we have a cluster of 6 servers) ; (V/2)=3, Vw>3, so Vw=4 ; 4 nodes will be write consistent; Vw+Vr>V, 4+?>6, so Vr=3
 
-> Vw + Vr > V
-> Vw>V/2
-
-if V=6
-
-(V/2)=3, Vw>3, so Vw=4
-
-Vw+Vr>V, 4+?>6, so Vr=3
+  > Vw + Vr > V
+  > Vw>V/2
 
 
 # Data Lake
