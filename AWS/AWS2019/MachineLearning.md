@@ -5,6 +5,23 @@ tags:
 - Machine Learning
 ---
 
+
+# Hands-on
+
+https://s3.amazonaws.com/solutions-reference/predictive-maintenance-using-machine-learning/latest/predictive-maintenance-using-machine-learning.pdf
+
+```log
+Couldn't call 'describe_notebook_instance' to get the Role ARN of the instance PredictiveMaintenanceNotebookInstance.
+```
+Update the role attached to the sagemaker instance
+
+```
+ResourceLimitExceeded
+```
+
+Change to train_instance_type = 'ml.p2.xlarge'
+
+
 # Reference
 
 >
