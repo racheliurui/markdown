@@ -18,3 +18,11 @@ https://youtu.be/TKgml4bSiZA
 * TDD , automation and ChatOps
 * Customer-centric design
 * CD
+
+## Archi
+
+
+# Reference Openbanking with HSBC
+
+>
+https://youtu.be/QNM9LVV_eI0
