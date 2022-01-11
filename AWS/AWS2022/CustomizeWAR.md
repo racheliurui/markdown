@@ -13,10 +13,10 @@ tags:
 2) PlatformIO plugin for VSCode
 3) ESP Rainmaker App
 
-## Lab Summary
+## Lab Summary 
 
-### Lab 1:
-Install ESP RainMaker Agent on device to be able to directly talking with ESP Rainmaker SAAS and
+### Lab 1: 
+Install ESP RainMaker Agent on device to be able to directly talking with ESP Rainmaker SAAS and 
 
 https://rainmaker.espressif.com/docs/claiming.html#assisted-claiming-esp32
 
